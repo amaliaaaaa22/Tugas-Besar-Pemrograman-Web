@@ -210,19 +210,44 @@
         }
     </style>
 </head>
+<?php
+session_start(); // Mulai sesi untuk menyimpan informasi pengguna jika berhasil login.
+
+$error_message = ''; // Inisialisasi pesan kesalahan
+
+// Cek apakah form telah disubmit
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Ambil input email dan password
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Logika autentikasi (misalnya, periksa dengan database)
+    if ($email === 'user@example.com' && $password === 'password') { // Gantungkan logika autentikasi di sini
+        // Jika login berhasil, set session dan redirect
+        $_SESSION['loggedin'] = true; // Menyimpan informasi sesi
+        header("Location: beranda"); // Redirect ke halaman beranda.
+        exit;
+    } else {
+        // Jika login gagal, tampilkan pesan kesalahan
+        $error_message = "Email atau password salah!";
+    }
+}
+?>
+
 <body>
     <div class="login-container">
         <div class="login-header">
             <a href="#" class="logo">Sky<span>Booking</span></a>
             <p>Selamat datang kembali! Silakan login ke akun Anda.</p>
+            <?php if ($error_message) echo "<p style='color:red;'>$error_message</p>"; ?>
         </div>
 
-        <form action="#" method="POST">
+        <form action="beranda" method="POST"> <!-- Mengarahkan action ke beranda -->
             <div class="form-group">
                 <label for="email">Email</label>
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" placeholder="Masukkan email Anda" required>
+                    <input type="email" name="email" id="email" placeholder="Masukkan email Anda" required>
                 </div>
             </div>
 
@@ -230,7 +255,7 @@
                 <label for="password">Password</label>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="Masukkan password Anda" required>
+                    <input type="password" name="password" id="password" placeholder="Masukkan password Anda" required>
                 </div>
             </div>
 
@@ -261,4 +286,3 @@
         </form>
     </div>
 </body>
-</html>
