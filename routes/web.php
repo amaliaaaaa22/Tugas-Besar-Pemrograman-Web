@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,16 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/home', \App\Http\Controllers\HomeController::class);
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/beranda', function () {
-    return view('beranda');
-});
-
-Route::get('/laravel', function () {
-    return view('laravel');
-});
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/login', [\App\Http\Controllers\HomeController::class, 'login'])->name('login');
+Route::get('/beranda', [\App\Http\Controllers\HomeController::class, 'beranda'])->name('beranda');
