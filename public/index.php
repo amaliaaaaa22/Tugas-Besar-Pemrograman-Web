@@ -5,51 +5,22 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-/*
-|--------------------------------------------------------------------------
-| Check If The Application Is Under Maintenance
-|--------------------------------------------------------------------------
-|
-| If the application is in maintenance / demo mode via the "down" command
-| we will load this file so that any pre-rendered content can be shown
-| instead of starting the framework, which could cause an exception.
-|
-*/
-
+// Cek jika aplikasi dalam mode pemeliharaan
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
+    require $maintenance; // Memuat halaman pemeliharaan jika ada
 }
 
-/*
-|--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader for
-| this application. We just need to utilize it! We'll simply require it
-| into the script here so we don't need to manually load our classes.
-|
-*/
+require __DIR__.'/../vendor/autoload.php'; // Memuat autoload dari Composer
 
-require __DIR__.'/../vendor/autoload.php';
+echo "Mencoba memuat: " . __DIR__.'/../bootstrap/app.php'; // Lihat jalur file yang akan dicoba untuk di-require
+die(); 
 
-/*
-|--------------------------------------------------------------------------
-| Run The Application
-|--------------------------------------------------------------------------
-|
-| Once we have the application, we can handle the incoming request using
-| the application's HTTP kernel. Then, we will send the response back
-| to this client's browser, allowing them to enjoy our application.
-|
-*/
+$app = require_once __DIR__.'/../bootstrap/app.php'; // Memuat aplikasi dari bootstrap
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
-$kernel = $app->make(Kernel::class);
+$kernel = $app->make(Kernel::class); // Membuat instance kernel
 
 $response = $kernel->handle(
-    $request = Request::capture()
-)->send();
+    $request = Request::capture() // Mengambil permintaan HTTP
+)->send(); // Mengirimkan respons ke pengguna
 
-$kernel->terminate($request, $response);
+$kernel->terminate($request, $response); 

@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BerandaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +21,5 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/login', [\App\Http\Controllers\HomeController::class, 'login'])->name('login');
-Route::get('/beranda', [\App\Http\Controllers\HomeController::class, 'beranda'])->name('beranda');
+Route::get('/login', [\App\Http\Controllers\loginController::class, 'index'])->name('login');
+Route::get('/beranda', [\App\Http\Controllers\berandaController::class, 'index'])->name('beranda');
