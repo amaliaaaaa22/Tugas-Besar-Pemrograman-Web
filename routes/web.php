@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::resource('/home', \App\Http\Controllers\HomeController::class);
 
 Route::get('/login', function () {
     return view('login');
