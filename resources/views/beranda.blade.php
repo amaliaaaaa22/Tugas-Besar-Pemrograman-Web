@@ -300,18 +300,6 @@
                     Profil
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-cog"></i>
-                    Pengaturan
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-question-circle"></i>
-                    Bantuan
-                </a>
-            </li>
         </ul>
     </div>
 
@@ -319,7 +307,7 @@
     <div class="main-content">
         <!-- Header -->
         <div class="header">
-            <h1>Selamat Datang, John!</h1>
+            <h1>Selamat Datang!</h1>
             <div class="user-profile">
                 <div class="notifications-icon">
                     <i class="fas fa-bell"></i>
