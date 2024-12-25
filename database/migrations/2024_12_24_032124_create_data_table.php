@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data', function (Blueprint $table) {
+        Schema::create('registrasis', function (Blueprint $table) {
             $table->id();
-            $table->string('id_user');
-            $table->foreign('id_user')->references('id_user')->on('register')->onDelete('cascade');
-            $table->string('email');
-            $table->string('nama');
+            $table->string('id_user')->unique(); // ID pengguna yang unik
+            $table->string('email')->unique(); // Email yang unik
+            $table->string('nama'); // Nama pengguna
             $table->string('password');
             $table->timestamps();
         });
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data');
+        Schema::dropIfExists('registrasis');
     }
 };
