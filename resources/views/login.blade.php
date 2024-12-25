@@ -21,7 +21,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: linear-gradient(135deg, #0099ff, #0043a8);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -41,7 +41,7 @@
 
         .login-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 30px;
         }
 
         .logo {
@@ -119,7 +119,7 @@
         }
 
         .login-btn {
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            background: #0099ff;
             color: white;
             padding: 1.2rem;
             border: none;
@@ -134,8 +134,8 @@
         }
 
         .login-btn:hover {
+            background: #0043a8;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
 
         .divider {
@@ -242,7 +242,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php if ($error_message) echo "<p style='color:red;'>$error_message</p>"; ?>
         </div>
 
-        <form action="beranda" method="POST"> <!-- Mengarahkan action ke beranda -->
+        <form action="beranda" method="GET"> <!-- Mengarahkan action ke beranda -->
+            @csrf
             <div class="form-group">
                 <label for="email">Email</label>
                 <div class="input-group">
@@ -281,7 +282,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="register-link">
-                Belum punya akun? <a href="#">Daftar sekarang</a>
+                Belum punya akun? <a href="{{ route('registrasi.form') }}">Daftar sekarang</a>
+
             </div>
         </form>
     </div>
