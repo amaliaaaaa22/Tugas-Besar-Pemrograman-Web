@@ -12,7 +12,7 @@ class data extends Model
         return view('login');
     }
 
-    public function store(Request $request)
+    public function store($request)
     {
         return view('login');
     }
