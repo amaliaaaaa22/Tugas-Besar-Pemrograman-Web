@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\PenerbanganController;
+use App\Http\Controllers\DestinasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::get('/beranda', [BerandaController::class, 'beranda'])->name('beranda');
 Route::get('/registrasi', [RegistrasiController::class, 'ShowForm'])->name('registrasi.form');
 Route::post('/registrasi', [RegistrasiController::class, 'handleForm'])->name('registrasi.submit');
 Route::get('/penerbangan', [PenerbanganController::class, 'index'])->name('penerbangan');
+Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi');
+Route::post('/destinasi/{destinasiId}/upload', [DestinasiController::class, 'uploadImage'])->name('destinasi.uploadImage');
