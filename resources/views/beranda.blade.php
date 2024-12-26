@@ -285,13 +285,13 @@
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-tag"></i>
-                    Promo
+                    Pesan Tiket
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-history"></i>
-                    Riwayat
+                    Destinasi
                 </a>
             </li>
             <li class="nav-item">
