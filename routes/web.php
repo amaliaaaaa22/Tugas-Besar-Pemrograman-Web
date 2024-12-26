@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\RegistrasiController;
+use App\Http\Controllers\PenerbanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/beranda', [BerandaController::class, 'beranda'])->name('beranda');
 Route::get('/registrasi', [RegistrasiController::class, 'ShowForm'])->name('registrasi.form');
 Route::post('/registrasi', [RegistrasiController::class, 'handleForm'])->name('registrasi.submit');
+Route::get('/penerbangan', [PenerbanganController::class, 'index'])->name('penerbangan');
