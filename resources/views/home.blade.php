@@ -292,6 +292,7 @@
             .hero-content h1 {
                 font-size: 2.5rem;
             }
+            
         }
     </style>
 </head>
