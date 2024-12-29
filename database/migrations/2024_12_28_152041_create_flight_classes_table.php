@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('flight_classes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(pesawat_id)->constrained()->casecadeOnDelete();
+            $table->foreignId('pesawat_id')->constrained('pesawats')->cascadeOnDelete();
             $table->enum('class_type', ['economy', 'bussines', 'first class']);
             $table->integer('harga');
             $table->integer('total_kursi');
