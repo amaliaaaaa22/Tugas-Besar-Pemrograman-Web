@@ -21,4 +21,19 @@ class transaksi extends Model
         'subtotal',
         'grandtotal'
     ];
+
+    public function perjalananflights()
+    {
+        return $this->belongsTo(perjalananflights::class);
+    }
+
+    public function class()
+    {
+        return $this->belongsTo(flight_class::class);
+    }
+
+    public function passenger()
+    {
+        return $this->hasMany(transaction_passengers::class);
+    }
 }

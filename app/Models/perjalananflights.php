@@ -16,6 +16,21 @@ class perjalananflights extends Model
 
     public function pesawat()
     {
-        return $this->belongTo(Airline::class);
+        return $this->belongsTo(Pesawat::class);
+    }
+
+    public function segment()
+    {
+        return $this->hasMany(flight_segmenets::class);
+    }
+
+    public function classes()
+    {
+        return $this->hasMany(flight_class::class);
+    }
+
+    public function transaksi()
+    {
+        return $this->hasMany(transaksi::class);
     }
 }

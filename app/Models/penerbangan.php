@@ -17,8 +17,8 @@ class penerbangan extends Model
         'country'
     ];
 
-    public function perjalananflights()
+    public function segments()
     {
-        return $this->belongTo(perjalananflights::class);
+        return $this->belongTo(flight_segmenets::class);
     }
 }

@@ -15,4 +15,11 @@ class flight_class extends Model
         'harga',
         'total_kursi'
     ];
+
+    public function perjalananflights()
+    {
+        return $this->belongsTo(perjalananflights::class);
+    }
 }
+
+    

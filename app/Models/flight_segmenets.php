@@ -15,4 +15,14 @@ class flight_segmenets extends Model
         'penerbangan_id',
         'time'
     ];
+
+    public function perjalanan()
+    {
+        return $this->belongsTo(perjalananflights::class);
+    }
+
+    public function airport()
+    {
+        return $this->belongsTo(penerbangan::class);
+    }
 }
