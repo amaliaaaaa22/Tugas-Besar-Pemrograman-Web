@@ -15,4 +15,9 @@ class pesawat extends Model
         'logo',
         
     ];
+
+    public function perjalananflights()
+    {
+        return $this->hasMany(perjalananflights::class);
+    }
 }

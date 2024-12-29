@@ -16,4 +16,9 @@ class penerbangan extends Model
         'kota',
         'country'
     ];
+
+    public function perjalananflights()
+    {
+        return $this->belongTo(perjalananflights::class);
+    }
 }

@@ -13,4 +13,9 @@ class perjalananflights extends Model
         'no_penerbangan',
         'pesawat_id'
     ];
+
+    public function pesawat()
+    {
+        return $this->belongTo(Airline::class);
+    }
 }
