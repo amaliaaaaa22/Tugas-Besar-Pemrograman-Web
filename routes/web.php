@@ -8,6 +8,8 @@ use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\PenerbanganController;
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TransactionPassengerController;
+use App\Http\Controllers\PerjalananFlightsController;
 
 /*
 |--------------------------------------------------------------------------
