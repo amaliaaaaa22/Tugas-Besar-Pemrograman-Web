@@ -31,3 +31,4 @@ Route::post('/registrasi', [RegistrasiController::class, 'handleForm'])->name('r
 Route::get('/penerbangan', [PenerbanganController::class, 'index'])->name('penerbangan');
 Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi');
 Route::post('/destinasi/{destinasiId}/upload', [DestinasiController::class, 'uploadImage'])->name('destinasi.uploadImage');
+Route::resource('transaction_passengers', TransactionPassengerController::class);
