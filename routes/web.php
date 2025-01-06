@@ -7,6 +7,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\PenerbanganController;
 use App\Http\Controllers\DestinasiController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,4 @@ Route::get('/penerbangan', [PenerbanganController::class, 'index'])->name('pener
 Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi');
 Route::post('/destinasi/{destinasiId}/upload', [DestinasiController::class, 'uploadImage'])->name('destinasi.uploadImage');
 Route::resource('transaction_passengers', TransactionPassengerController::class);
+Route::resource('transaksi', TransaksiController::class);
