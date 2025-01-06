@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class transaksi extends Model
+class Transaksi extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -19,21 +20,21 @@ class transaksi extends Model
         'no_passengers',
         'status_pembayaran',
         'subtotal',
-        'grandtotal'
+        'grandtotal',
     ];
 
-    public function perjalananflights()
+    public function perjalananFlight()
     {
-        return $this->belongsTo(perjalananflights::class);
+        return $this->belongsTo(PerjalananFlight::class);
     }
 
-    public function class()
+    public function flightClass()
     {
-        return $this->belongsTo(flight_class::class);
+        return $this->belongsTo(FlightClass::class);
     }
 
-    public function passenger()
+    public function passengers()
     {
-        return $this->hasMany(transaction_passengers::class);
+        return $this->hasMany(TransactionPassenger::class);
     }
 }
