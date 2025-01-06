@@ -10,7 +10,7 @@ use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransactionPassengerController;
 use App\Http\Controllers\PerjalananFlightsController;
-
+use App\Http\Controllers\FlightClassController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
