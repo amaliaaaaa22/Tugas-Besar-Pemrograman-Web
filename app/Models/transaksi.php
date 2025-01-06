@@ -10,6 +10,7 @@ class Transaksi extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'transaksis'; // Jika nama tabel tidak sesuai konvensi Laravel
     protected $fillable = [
         'code',
         'perjalananflights_id',
