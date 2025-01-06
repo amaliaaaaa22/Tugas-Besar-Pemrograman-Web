@@ -289,7 +289,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/destinasi" class="nav-link">
                     <i class="fas fa-history"></i>
                     Destinasi
                 </a>
