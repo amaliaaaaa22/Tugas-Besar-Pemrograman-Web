@@ -9,6 +9,7 @@ use App\Http\Controllers\PenerbanganController;
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\TransactionPassengerController;
 use App\Http\Controllers\TiketController;
+use App\Http\Controllers\RescheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,6 @@ Route::post('/destinasi/{destinasiId}/upload', [DestinasiController::class, 'upl
 Route::get('/transaction', [TransactionPassengerController::class, 'index']);
 Route::get('/tiket', [TiketController::class, 'index'])->name('tiket.index');
 Route::post('/tiket/{tiketId}/upload', [TiketController::class, 'uploadImage'])->name('tiket.upload');
+Route::get('/reschedule', [RescheduleController::class, 'showForm'])->name('reschedule.form');
+Route::post('/reschedule', [RescheduleController::class, 'processReschedule'])->name('reschedule.process');
+Route::get('/reschedule/success', [RescheduleController::class, 'success'])->name('reschedule.success');

@@ -15,9 +15,9 @@
 
         :root {
             --primary-color: #2c3e50;
-            --accent-color: #3498db;
+            --accent-color:rgb(60, 153, 215);
             --gradient-start: #2980b9;
-            --gradient-end: #3498db;
+            --gradient-end:rgb(36, 125, 185);
         }
 
         body {

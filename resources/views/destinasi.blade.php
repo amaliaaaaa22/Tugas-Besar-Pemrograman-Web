@@ -12,6 +12,60 @@
             padding: 0;
             background-color: #f8f9fa;
         }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --gradient-start: #2980b9;
+            --gradient-end: #3498db;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
 
         .hero-section {
             position: relative;
@@ -135,29 +189,6 @@
             background-color: #0056b3;
         }
 
-        .file-upload {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .file-upload input[type="file"] {
-            display: none;
-        }
-
-        .file-upload label {
-            background-color: #007bff;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .file-upload label:hover {
-            background-color: #0056b3;
-        }
-
         @media (max-width: 1024px) {
             .destination-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -178,6 +209,18 @@
     </style>
 </head>
 <body>
+<nav>
+        <div class="container">
+            <a href="#" class="logo">Sky<span>Booking</span></a>
+            <div class="nav-links">
+                <a href="./beranda"><i class="fas fa-home"></i> Beranda</a>
+                <a href="#"><i class="fas fa-tag"></i> Promo</a>
+                <a href="./destinasi"><i class="fas fa-plane"></i> Destinasi</a>
+                <a href="#"><i class="fas fa-headset"></i> Bantuan</a>
+                <a href="./login"><i class="fas fa-user"></i> Login</a>
+            </div>
+        </div>
+    </nav>
     <div class="hero-section">
         <img src="./bg1.jpg" alt="Beach destination" class="hero-image">
         <div class="hero-content">
@@ -193,103 +236,64 @@
         <div class="destination-grid">
             <!-- Destinasi 1 -->
             <div class="destination-card">
-                <img id="image-bali" src="https://via.placeholder.com/300" alt="Bali">
+                <a href="https://pin.it/7H6sEEjSj" target="_blank"><img src="https://via.placeholder.com/300" alt="Bali"></a>
                 <div class="destination-info">
                     <h2>Bali (DPS)</h2>
                     <p><i class="fas fa-plane"></i> Keindahan pantai dan budaya eksotis.</p>
-                </div>
-                <div class="file-upload">
-                    <input type="file" id="upload-bali" accept="image/*" onchange="updateImage('image-bali', 'upload-bali')">
-                    <label for="upload-bali">Unggah Foto</label>
                 </div>
                 <button class="button"><i class="fas fa-ticket-alt"></i> Pesan Tiket</button>
             </div>
 
             <!-- Destinasi 2 -->
             <div class="destination-card">
-                <img id="image-jakarta" src="https://via.placeholder.com/300" alt="Jakarta">
+                <a href="https://via.placeholder.com/300" target="_blank"><img src="https://via.placeholder.com/300" alt="Jakarta"></a>
                 <div class="destination-info">
                     <h2>Jakarta (CGK)</h2>
                     <p><i class="fas fa-plane"></i> Pusat bisnis dan ibu kota Indonesia.</p>
-                </div>
-                <div class="file-upload">
-                    <input type="file" id="upload-jakarta" accept="image/*" onchange="updateImage('image-jakarta', 'upload-jakarta')">
-                    <label for="upload-jakarta">Unggah Foto</label>
                 </div>
                 <button class="button"><i class="fas fa-ticket-alt"></i> Pesan Tiket</button>
             </div>
 
             <!-- Destinasi 3 -->
             <div class="destination-card">
-                <img id="image-surabaya" src="https://via.placeholder.com/300" alt="Surabaya">
+                <a href="https://via.placeholder.com/300" target="_blank"><img src="https://via.placeholder.com/300" alt="Surabaya"></a>
                 <div class="destination-info">
                     <h2>Surabaya (SUB)</h2>
                     <p><i class="fas fa-plane"></i> Kota pahlawan dengan wisata sejarah.</p>
-                </div>
-                <div class="file-upload">
-                    <input type="file" id="upload-surabaya" accept="image/*" onchange="updateImage('image-surabaya', 'upload-surabaya')">
-                    <label for="upload-surabaya">Unggah Foto</label>
                 </div>
                 <button class="button"><i class="fas fa-ticket-alt"></i> Pesan Tiket</button>
             </div>
 
             <!-- Destinasi 4 -->
             <div class="destination-card">
-                <img id="image-medan" src="https://via.placeholder.com/300" alt="Medan">
+                <a href="https://via.placeholder.com/300" target="_blank"><img src="https://via.placeholder.com/300" alt="Medan"></a>
                 <div class="destination-info">
                     <h2>Medan (KNO)</h2>
                     <p><i class="fas fa-plane"></i> Kuliner khas dan keindahan Danau Toba.</p>
-                </div>
-                <div class="file-upload">
-                    <input type="file" id="upload-medan" accept="image/*" onchange="updateImage('image-medan', 'upload-medan')">
-                    <label for="upload-medan">Unggah Foto</label>
                 </div>
                 <button class="button"><i class="fas fa-ticket-alt"></i> Pesan Tiket</button>
             </div>
 
             <!-- Destinasi 5 -->
             <div class="destination-card">
-                <img id="image-bandung" src="https://via.placeholder.com/300" alt="Bandung">
+                <a href="https://via.placeholder.com/300" target="_blank"><img src="https://via.placeholder.com/300" alt="Bandung"></a>
                 <div class="destination-info">
                     <h2>Bandung (BDO)</h2>
                     <p><i class="fas fa-plane"></i> Wisata alam dan belanja fashion.</p>
-                </div>
-                <div class="file-upload">
-                    <input type="file" id="upload-bandung" accept="image/*" onchange="updateImage('image-bandung', 'upload-bandung')">
-                    <label for="upload-bandung">Unggah Foto</label>
                 </div>
                 <button class="button"><i class="fas fa-ticket-alt"></i> Pesan Tiket</button>
             </div>
 
             <!-- Destinasi 6 -->
             <div class="destination-card">
-                <img id="image-makassar" src="https://via.placeholder.com/300" alt="Makassar">
+                <a href="https://via.placeholder.com/300" target="_blank"><img src="https://via.placeholder.com/300" alt="Makassar"></a>
                 <div class="destination-info">
                     <h2>Makassar (UPG)</h2>
                     <p><i class="fas fa-plane"></i> Wisata bahari dan kuliner khas Sulawesi.</p>
-                </div>
-                <div class="file-upload">
-                    <input type="file" id="upload-makassar" accept="image/*" onchange="updateImage('image-makassar', 'upload-makassar')">
-                    <label for="upload-makassar">Unggah Foto</label>
                 </div>
                 <button class="button"><i class="fas fa-ticket-alt"></i> Pesan Tiket</button>
             </div>
         </div>
     </div>
-
-    <script>
-        function updateImage(imageId, inputId) {
-            const inputFile = document.getElementById(inputId);
-            const imageElement = document.getElementById(imageId);
-
-            if (inputFile.files && inputFile.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imageElement.src = e.target.result;
-                };
-                reader.readAsDataURL(inputFile.files[0]);
-            }
-        }
-    </script>
 </body>
 </html>

@@ -292,6 +292,7 @@
             .hero-content h1 {
                 font-size: 2.5rem;
             }
+            
         }
     </style>
 </head>
@@ -300,11 +301,11 @@
         <div class="container">
             <a href="#" class="logo">Sky<span>Booking</span></a>
             <div class="nav-links">
-                <a href="#"><i class="fas fa-home"></i> Beranda</a>
+                <a href="./beranda"><i class="fas fa-home"></i> Beranda</a>
                 <a href="#"><i class="fas fa-tag"></i> Promo</a>
-                <a href="#"><i class="fas fa-plane"></i> Destinasi</a>
+                <a href="./destinasi"><i class="fas fa-plane"></i> Destinasi</a>
                 <a href="#"><i class="fas fa-headset"></i> Bantuan</a>
-                <a href="#"><i class="fas fa-user"></i> Login</a>
+                <a href="./login"><i class="fas fa-user"></i> Login</a>
             </div>
         </div>
     </nav>
