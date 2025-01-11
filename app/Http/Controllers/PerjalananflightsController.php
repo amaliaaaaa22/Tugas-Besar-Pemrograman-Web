@@ -4,24 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\perjalananflights;
 use Illuminate\Http\Request;
+use App\Models\Pesawat;
 
 class PerjalananFlightsController extends Controller
 {
     // Menampilkan daftar perjalanan flights
     public function index()
     {
-        // Mengambil data perjalananflights beserta relasinya
-        $perjalananflights = perjalananflights::with(['pesawat', 'segment', 'classes', 'transaksi'])->get();
-
-        // Mengirim data ke view 'perjalananflights.index'
-        return view('perjalananflights.index', compact('perjalananflights'));
+    // Perbaiki variabel yang dikirim ke view
+    $perjalananflights = perjalananflights::with(['pesawat', 'segment', 'classes', 'transaksi'])->get();
+    return view('perjalananflights', compact('perjalananflights')); // Ganti 'flights' menjadi 'perjalananflights'
     }
 
     // Menampilkan form untuk menambahkan perjalanan flight baru
     public function create()
     {
-        // Menampilkan form input data
-        return view('perjalananflights.create');
+    $pesawat = Pesawat::all(); // Tambahkan ini
+    return view('perjalananflights.create', compact('pesawat'));
     }
 
     // Menyimpan perjalanan flight baru
@@ -43,11 +42,9 @@ class PerjalananFlightsController extends Controller
     // Menampilkan form untuk mengedit perjalanan flight
     public function edit($id)
     {
-        // Mencari data perjalanan flight berdasarkan ID
-        $flight = perjalananflights::findOrFail($id);
-
-        // Menampilkan form edit data
-        return view('perjalananflights.edit', compact('flight'));
+    $flight = perjalananflights::findOrFail($id);
+    $pesawat = Pesawat::all(); // Tambahkan ini
+    return view('perjalananflights.edit', compact('flight', 'pesawat'));
     }
 
     // Memperbarui data perjalanan flight
