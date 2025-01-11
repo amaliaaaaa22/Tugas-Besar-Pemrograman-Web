@@ -99,7 +99,7 @@
     <h1>Transaction Passengers</h1>
 
     <!-- Form to add a new passenger -->
-    <form action="{{ route('transaction_passengers.store') }}" method="POST" class="form">
+    <form action="{{ route('transaction.index') }}" method="POST" class="form">
         @csrf
         <div class="form-group">
             <label for="nama">Nama</label>
