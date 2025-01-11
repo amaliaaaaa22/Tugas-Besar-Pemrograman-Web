@@ -448,11 +448,11 @@
         <div class="nav-container">
             <a href="#" class="logo">SkyBooking</a>
             <div class="nav-links">
-                <a href="#"><i class="fas fa-home"></i> Beranda</a>
-                <a href="#"><i class="fas fa-tag"></i> Promo</a>
-                <a href="#"><i class="fas fa-plane"></i> Destinasi</a>
-                <a href="#"><i class="fas fa-headset"></i> Bantuan</a>
-                <a href="#"><i class="fas fa-user"></i> Login</a>
+                <a href="./beranda"><i class="fas fa-home"></i> Beranda</a>
+                <a href="./promo"><i class="fas fa-tag"></i> Promo</a>
+                <a href="./destinasi"><i class="fas fa-plane"></i> Destinasi</a>
+                <a href="./bantuan"><i class="fas fa-headset"></i> Bantuan</a>
+                <a href="./login"><i class="fas fa-user"></i> Login</a>
             </div>
         </div>
     </nav>
@@ -472,6 +472,7 @@
             </div>
             <div class="form-group">
                 <i class="fas fa-plane-arrival"></i>
+                <span id="destinations" data-destinations=" $destinations"></span>
                 <input type="text" class="form-input" placeholder="Ke mana?">
             </div>
             <div class="form-group">
@@ -489,8 +490,10 @@
                 </select>
             </div>
             <button type="submit" class="search-btn">
+                <span id="destinations" data-destinations=" $destinations"></span>
                 <i class="fas fa-search"></i> Cari Penerbangan
             </button>
+            
         </form>
     </div>
 
@@ -515,7 +518,7 @@
                         <span>Rating: <?php echo $dest['rating']; ?></span>
                     </div>
                     <div class="price"><?php echo $dest['price']; ?></div>
-                    <a href="#" class="book-btn">
+                    <a href="./home" class="book-btn">
                         <i class="fas fa-ticket-alt"></i> Pesan Sekarang
                     </a>
                 </div>

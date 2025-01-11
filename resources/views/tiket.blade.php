@@ -810,6 +810,17 @@
                 <span class="tag">Bromo</span>
                 <span class="tag">Raja Ampat</span>
                 <span class="tag">Lombok</span>
+                <span class="tag">Yogyakarta</span>
+                <span class="tag">Surabaya</span>
+                <span class="tag">Jakarta</span>
+                <span class="tag">Bandung</span>
+                <span class="tag">Semarang</span>
+                <span class="tag">Denpasar</span>
+                <span class="tag">Medan</span>
+                <span class="tag">Surabaya</span>
+                <span class="tag">Kupang</span>
+                <span class="tag">Pariaman</span>
+                <span class="tag">Sumbawa</span>
             </div>
         </div>
     </div>
