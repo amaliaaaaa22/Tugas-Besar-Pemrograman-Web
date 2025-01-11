@@ -161,6 +161,22 @@
         }
     </style>
 </head>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-plane-arrival"></i> Selamat Datang!</h1>
+            <div class="user-profile">
+                <div class="notifications-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+
+</head>
 <body>
     <div class="navbar">
         <div class="logo">Sky Booking</div>
