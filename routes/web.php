@@ -10,7 +10,8 @@ use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\TransactionPassengerController;
 use App\Http\Controllers\TiketController;
 use App\Http\Controllers\RescheduleController;
-
+use App\Http\Controllers\PerjalananFlightsController;
+use App\Http\Controllers\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +41,16 @@ Route::post('/tiket/{tiketId}/upload', [TiketController::class, 'uploadImage'])-
 Route::get('/reschedule', [RescheduleController::class, 'showForm'])->name('reschedule.form');
 Route::post('/reschedule', [RescheduleController::class, 'processReschedule'])->name('reschedule.process');
 Route::get('/reschedule/success', [RescheduleController::class, 'success'])->name('reschedule.success');
+Route::get('/perjalananflights', [PerjalananFlightsController::class, 'index'])->name('perjalananflights.index');
+Route::get('/perjalananflights/create', [PerjalananFlightsController::class, 'create'])->name('perjalananflights.create');
+Route::post('/perjalananflights', [PerjalananFlightsController::class, 'store'])->name('perjalananflights.store');
+Route::get('/perjalananflights/{id}/edit', [PerjalananFlightsController::class, 'edit'])->name('perjalananflights.edit');
+Route::put('/perjalananflights/{id}', [PerjalananFlightsController::class, 'update'])->name('perjalananflights.update');
+Route::delete('/perjalananflights/{id}', [PerjalananFlightsController::class, 'destroy'])->name('perjalananflights.destroy');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('perjalananflights', PerjalananFlightsController::class);
+Route::resource('transaksi', TransaksiController::class);

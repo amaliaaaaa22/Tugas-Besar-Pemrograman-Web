@@ -8,22 +8,25 @@
 </head>
 <body>
    <div class="container mt-5">
+       <!-- Flash message -->
        @if(session('success'))
            <div class="alert alert-success">
                {{ session('success') }}
            </div>
        @endif
 
+       <!-- Header Section -->
        <div class="d-flex justify-content-between align-items-center mb-4">
            <h1>Daftar Perjalanan Flights</h1>
            <a href="{{ route('perjalananflights.create') }}" class="btn btn-primary">Tambah Data</a>
        </div>
 
+       <!-- Flights Table -->
        <div class="card">
            <div class="card-body">
                <div class="table-responsive">
-                   <table class="table table-striped">
-                       <thead>
+                   <table class="table table-striped table-bordered">
+                       <thead class="table-dark">
                            <tr>
                                <th>No</th>
                                <th>No Penerbangan</th>
@@ -41,19 +44,25 @@
                                    <td>{{ $flight->no_penerbangan }}</td>
                                    <td>{{ $flight->pesawat->nama_pesawat ?? '-' }}</td>
                                    <td>
-                                       @foreach($flight->segment as $segment)
+                                       @forelse($flight->segments as $segment)
                                            {{ $segment->nama_segment }}<br>
-                                       @endforeach
+                                       @empty
+                                           <small class="text-muted">Tidak ada segment</small>
+                                       @endforelse
                                    </td>
                                    <td>
-                                       @foreach($flight->classes as $class)
+                                       @forelse($flight->classes as $class)
                                            {{ $class->nama_class }}<br>
-                                       @endforeach
+                                       @empty
+                                           <small class="text-muted">Tidak ada class</small>
+                                       @endforelse
                                    </td>
                                    <td>
-                                       @foreach($flight->transaksi as $transaksi)
+                                       @forelse($flight->transaksi as $transaksi)
                                            ID: {{ $transaksi->id }} - Total: {{ number_format($transaksi->total, 0, ',', '.') }}<br>
-                                       @endforeach
+                                       @empty
+                                           <small class="text-muted">Tidak ada transaksi</small>
+                                       @endforelse
                                    </td>
                                    <td>
                                        <a href="{{ route('perjalananflights.edit', $flight->id) }}" 
@@ -75,7 +84,9 @@
                                </tr>
                            @empty
                                <tr>
-                                   <td colspan="7" class="text-center">Data tidak ditemukan</td>
+                                   <td colspan="7" class="text-center">
+                                       <em>Data tidak ditemukan</em>
+                                   </td>
                                </tr>
                            @endforelse
                        </tbody>
