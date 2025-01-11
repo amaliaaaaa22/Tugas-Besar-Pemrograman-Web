@@ -518,7 +518,7 @@
                         <span>Rating: <?php echo $dest['rating']; ?></span>
                     </div>
                     <div class="price"><?php echo $dest['price']; ?></div>
-                    <a href="./home" class="book-btn">
+                    <a href="./tiket" class="book-btn">
                         <i class="fas fa-ticket-alt"></i> Pesan Sekarang
                     </a>
                 </div>

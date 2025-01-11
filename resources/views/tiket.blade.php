@@ -818,9 +818,6 @@
                 <span class="tag">Denpasar</span>
                 <span class="tag">Medan</span>
                 <span class="tag">Surabaya</span>
-                <span class="tag">Kupang</span>
-                <span class="tag">Pariaman</span>
-                <span class="tag">Sumbawa</span>
             </div>
         </div>
     </div>
