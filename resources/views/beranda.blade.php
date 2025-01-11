@@ -83,9 +83,11 @@
         }
 
         .logo span {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background-clip: text; 
+             -webkit-background-clip: text; 
+             -webkit-text-fill-color: transparent; 
+             color: transparent; 
         }
 
         .nav-menu {
