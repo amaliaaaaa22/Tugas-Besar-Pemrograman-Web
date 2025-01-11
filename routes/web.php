@@ -12,6 +12,9 @@ use App\Http\Controllers\TiketController;
 use App\Http\Controllers\RescheduleController;
 use App\Http\Controllers\PerjalananFlightsController;
 use App\Http\Controllers\FlightClassController;
+use App\Http\Controllers\UserProfileController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -65,4 +68,8 @@ Route::prefix('flight_class')->group(function () {
     // Route untuk menghapus flight class
     Route::delete('/{id}', [FlightClassController::class, 'destroy'])->name('flight_class.destroy');
     Route::get('/reschedule/success', [RescheduleController::class, 'success'])->name('reschedule.success');
+});
+Route::middleware(['profiles.edit'])->group(function () {
+    Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
 });
