@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('perjalananflights', function (Blueprint $table) {
             $table->id();
             $table->string('no_penerbangan');
-            $table->foreignId('pesawat_id')->constrained()->casecadeOrDelete();
-            $table->SoftDeletes();
+            $table->foreignId('pesawat_id')->constrained('pesawat')->cascadeOnDelete(); // Perbaiki typo
+            $table->softDeletes(); // Perbaiki capitalisasi
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class TiketController extends Controller
 {
@@ -42,8 +43,8 @@ class TiketController extends Controller
      * @param  string  $tiketId
      * @return \Illuminate\Http\Response
      */
-    public function uploadImage(Request $request, $tiketId)
-    {
+    public function uploadImage(Request $request, $tiketId): RedirectResponse
+{
         // Validasi gambar
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -57,9 +58,7 @@ class TiketController extends Controller
         // Menyimpan gambar ke folder tiket
         $image->move($imagePath, $imageName);
 
-        // Menyimpan path gambar di database atau melakukan hal lain sesuai kebutuhan
-
-        // Mengembalikan response sukses atau redirect ke halaman sebelumnya
+        // Kembali ke halaman sebelumnya dengan pesan sukses
         return back()->with('success', 'Gambar tiket berhasil diunggah!');
     }
 }
