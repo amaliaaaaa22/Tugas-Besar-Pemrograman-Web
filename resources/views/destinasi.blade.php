@@ -450,9 +450,9 @@
             <a href="#" class="logo">SkyBooking</a>
             <div class="nav-links">
                 <a href="./beranda"><i class="fas fa-home"></i> Beranda</a>
-                <a href="./promo"><i class="fas fa-tag"></i> Promo</a>
-                <a href="./destinasi"><i class="fas fa-plane"></i> Destinasi</a>
-                <a href="./bantuan"><i class="fas fa-headset"></i> Bantuan</a>
+                <a href="./reschedule"><i class="fas fa-tag"></i> Reschedule</a>
+                <a href="./penerbangan"><i class="fas fa-plane"></i> Penerbangan</a>
+                <a href="./tiket"><i class="fas fa-headset"></i> Tiket Saya</a>
                 <a href="./login"><i class="fas fa-user"></i> Login</a>
             </div>
         </div>
