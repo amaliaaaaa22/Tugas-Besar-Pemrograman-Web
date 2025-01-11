@@ -1,12 +1,12 @@
-<?php
+<?php 
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class transaksi extends Model
+class transaction_passengers extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -20,20 +20,29 @@ class transaksi extends Model
         'no_passengers',
         'status_pembayaran',
         'subtotal',
-        'grandtotal'
+        'grandtotal',
     ];
 
-    public function perjalananflights()
+    /**
+     * Relasi ke tabel perjalananflights.
+     */
+    public function perjalananFlight()
     {
         return $this->belongsTo(perjalananflights::class);
     }
 
-    public function class()
+    /**
+     * Relasi ke tabel flight_classes.
+     */
+    public function flightClass()
     {
         return $this->belongsTo(flight_class::class);
     }
 
-    public function passenger()
+    /**
+     * Relasi ke tabel transaction_passengers.
+     */
+    public function passengers()
     {
         return $this->hasMany(transaction_passengers::class);
     }
