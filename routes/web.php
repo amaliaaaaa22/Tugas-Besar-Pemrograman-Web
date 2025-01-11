@@ -11,11 +11,7 @@ use App\Http\Controllers\TransactionPassengerController;
 use App\Http\Controllers\TiketController;
 use App\Http\Controllers\RescheduleController;
 use App\Http\Controllers\PerjalananFlightsController;
-use App\Http\Controllers\FlightClassController;
-use App\Http\Controllers\UserProfileController;
-
-
-
+use App\Http\Controllers\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,31 +41,16 @@ Route::post('/tiket/{tiketId}/upload', [TiketController::class, 'uploadImage'])-
 Route::get('/reschedule', [RescheduleController::class, 'showForm'])->name('reschedule.form');
 Route::post('/reschedule', [RescheduleController::class, 'processReschedule'])->name('reschedule.process');
 Route::get('/reschedule/success', [RescheduleController::class, 'success'])->name('reschedule.success');
+Route::get('/perjalananflights', [PerjalananFlightsController::class, 'index'])->name('perjalananflights.index');
+Route::get('/perjalananflights/create', [PerjalananFlightsController::class, 'create'])->name('perjalananflights.create');
+Route::post('/perjalananflights', [PerjalananFlightsController::class, 'store'])->name('perjalananflights.store');
+Route::get('/perjalananflights/{id}/edit', [PerjalananFlightsController::class, 'edit'])->name('perjalananflights.edit');
+Route::put('/perjalananflights/{id}', [PerjalananFlightsController::class, 'update'])->name('perjalananflights.update');
+Route::delete('/perjalananflights/{id}', [PerjalananFlightsController::class, 'destroy'])->name('perjalananflights.destroy');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::resource('perjalananflights', PerjalananFlightsController::class);
-Route::prefix('flight_class')->group(function () {
-    // Route untuk menampilkan daftar flight class
-    Route::get('/', [FlightClassController::class, 'index'])->name('flight_class.index');
-    
-    // Route untuk menampilkan form tambah flight class
-    Route::get('/create', [FlightClassController::class, 'create'])->name('flight_class.create');
-    
-    // Route untuk menyimpan flight class baru
-    Route::post('/', [FlightClassController::class, 'store'])->name('flight_class.store');
-    
-    // Route untuk menampilkan detail flight class
-    Route::get('/{id}', [FlightClassController::class, 'show'])->name('flight_class.show');
-    
-    // Route untuk menampilkan form edit flight class
-    Route::get('/{id}/edit', [FlightClassController::class, 'edit'])->name('flight_class.edit');
-    
-    // Route untuk memperbarui data flight class
-    Route::put('/{id}', [FlightClassController::class, 'update'])->name('flight_class.update');
-    
-    // Route untuk menghapus flight class
-    Route::delete('/{id}', [FlightClassController::class, 'destroy'])->name('flight_class.destroy');
-    Route::get('/reschedule/success', [RescheduleController::class, 'success'])->name('reschedule.success');
-});
-Route::middleware(['profiles.edit'])->group(function () {
-    Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
-});
+Route::resource('transaksi', TransaksiController::class);
