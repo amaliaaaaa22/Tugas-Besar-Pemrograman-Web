@@ -41,7 +41,6 @@ Route::get('/tiket', [TiketController::class, 'index'])->name('tiket.index');
 Route::post('/tiket/{tiketId}/upload', [TiketController::class, 'uploadImage'])->name('tiket.upload');
 Route::get('/reschedule', [RescheduleController::class, 'showForm'])->name('reschedule.form');
 Route::post('/reschedule', [RescheduleController::class, 'processReschedule'])->name('reschedule.process');
-<<<<<<< HEAD
 Route::get('/reschedule/success', [RescheduleController::class, 'success'])->name('reschedule.success');
 Route::resource('perjalananflights', PerjalananFlightsController::class);
 Route::prefix('flight_class')->group(function () {
@@ -65,7 +64,5 @@ Route::prefix('flight_class')->group(function () {
     
     // Route untuk menghapus flight class
     Route::delete('/{id}', [FlightClassController::class, 'destroy'])->name('flight_class.destroy');
+    Route::get('/reschedule/success', [RescheduleController::class, 'success'])->name('reschedule.success');
 });
-=======
-Route::get('/reschedule/success', [RescheduleController::class, 'success'])->name('reschedule.success');
->>>>>>> 4a8f7949042776170e852e5b0df8811dfb1895fe
