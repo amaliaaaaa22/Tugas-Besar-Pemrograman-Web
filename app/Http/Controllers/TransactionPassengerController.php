@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\transaction_passengers;
 use Illuminate\Http\Request;
+use App\Models\TransactionPassenger;
 
-class TransactionPassengersController extends Controller
+class TransactionPassengerController extends Controller
 {
     public function index()
     {
-        $passengers = TransactionPassenger::all();
+        $passengers = transaction_passengers::all();
         return view('transaction_passengers', compact('passengers'));
     }
 
     public function store(Request $request)
     {
-        TransactionPassenger::create($request->all());
+        transaction_passengers::create($request->all());
         return redirect()->route('transaction_passengers.index');
     }
 
     public function destroy($id)
     {
-        $passenger = TransactionPassenger::findOrFail($id);
+        $passenger = transaction_passengers::findOrFail($id);
         $passenger->delete();
-        return redirect()->route('transaction_passengers.index');
+        return redirect()->route('transaction.index');
     }
-
 }
