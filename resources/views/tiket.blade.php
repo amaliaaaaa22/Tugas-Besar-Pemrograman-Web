@@ -705,6 +705,19 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+                @media (max-width: 768px) {
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.5rem;
+                }
+            }
     </style>
 </head>
 <body>
@@ -782,25 +795,47 @@
 
     <div class="hero">
         <h1>Pesan Tiket Pesawat</h1>
-        
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="name" placeholder="Nama Penumpang" required>
-            </div>
-            <div class="search-box">
-                <select id="destination" required>
-                    <option value="">Pilih Destinasi</option>
-                    <option value="Bali">Bali</option>
-                    <option value="Jakarta">Jakarta</option>
-                    <option value="Surabaya">Surabaya</option>
-                    <option value="Medan">Medan</option>
-                </select>
-            </div>
-            <div class="search-box">
-                <input type="number" id="quantity" placeholder="Jumlah Tiket" required>
-            </div>
+        <div class="form-container">
+            <form class="form-group">
+                <div class="search-box">
+                    <label for="from"><i class="fas fa-plane-departure"></i> Dari</label>
+                    <input type="text" id="from" placeholder="Kota Keberangkatan">
+                </div>
+                <div class="search-box">
+                    <label for="to"><i class="fas fa-plane-arrival"></i> Ke</label>
+                    <input type="text" id="to" placeholder="Kota Tujuan">
+                </div>
+                <div class="search-box">
+                    <label for="departure"><i class="far fa-calendar-alt"></i> Tanggal Berangkat</label>
+                    <input type="date" id="departure" placeholder="Tanggal Berangkat">
+                </div>
+                <div class="search-box">
+                    <label for="return"><i class="far fa-calendar-alt"></i> Tanggal Kembali</label>
+                    <input type="date" id="return" placeholder="Tanggal Kembali">
+                </div>
+                <div class="search-box">
+                    <label for="passengers"><i class="fas fa-users"></i> Jumlah Penumpang</label>
+                    <select id="passengers">
+                        <option value="1">1 Penumpang</option>
+                        <option value="2">2 Penumpang</option>
+                        <option value="3">3 Penumpang</option>
+                        <option value="4">4+ Penumpang</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <label for="class"><i class="fas fa-chair"></i> Kelas Penerbangan</label>
+                    <select id="class">
+                        <option value="economy">Ekonomi</option>
+                        <option value="business">Bisnis</option>
+                        <option value="first">First Class</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i> Cari Penerbangan
+                </button>
+            </form>
             <button class="search-button" onclick="saveTicket()">Pesan</button>
-        </div>
+    </div>
 
         <div class="popular-search">
             <h3>Popular Search</h3>
