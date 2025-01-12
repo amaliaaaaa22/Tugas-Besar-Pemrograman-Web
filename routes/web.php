@@ -47,6 +47,10 @@ Route::post('/perjalananflights', [PerjalananFlightsController::class, 'store'])
 Route::get('/perjalananflights/{id}/edit', [PerjalananFlightsController::class, 'edit'])->name('perjalananflights.edit');
 Route::put('/perjalananflights/{id}', [PerjalananFlightsController::class, 'update'])->name('perjalananflights.update');
 Route::delete('/perjalananflights/{id}', [PerjalananFlightsController::class, 'destroy'])->name('perjalananflights.destroy');
+Route::get('/transaction_passengers', [TransactionPassengerController::class, 'index'])->name('transaction.index');
+Route::post('/transaction_passengers', [TransactionPassengerController::class, 'store']);
+Route::put('/transaction_passengers/{id}', [TransactionPassengerController::class, 'update']);
+Route::delete('/transaction_passengers/{id}', [TransactionPassengerController::class, 'destroy']);
 
 Route::get('/', function () {
     return view('welcome');

@@ -1,32 +1,59 @@
 <?php
+// TransactionPassengerController.php
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use App\Models\TransactionPassenger;
+use Illuminate\Http\Request;
 
-return new class extends Migration
+class TransactionPassengerController extends Controller
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function index()
     {
-        Schema::create('transaction_passengers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('transaksi_id')->constrained()->casecadeOnDelete();
-            $table->string('nama');
-            $table->date('tanggal_lahir');
-            $table->string('negara');
-            $table->SoftDeletes();
-            $table->timestamps();
-        });
+        $passengers = TransactionPassenger::all();
+        return view('transaction_passengers.index', compact('passengers'));
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function store(Request $request)
     {
-        Schema::dropIfExists('transaction_passengers');
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'negara' => 'required|string|max:255',
+        ]);
+
+        TransactionPassenger::create([
+            'transaksi_id' => 1, // You'll need to adjust this based on your needs
+            'nama' => $request->nama,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'negara' => $request->negara,
+        ]);
+
+        return redirect()->route('transaction.index')->with('success', 'Passenger added successfully');
     }
-};
+
+    public function update(Request $request, $id)
+    {
+        $passenger = TransactionPassenger::findOrFail($id);
+        
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'negara' => 'required|string|max:255',
+        ]);
+
+        $passenger->update([
+            'nama' => $request->nama,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'negara' => $request->negara,
+        ]);
+
+        return redirect()->route('transaction.index')->with('success', 'Passenger updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $passenger = TransactionPassenger::findOrFail($id);
+        $passenger->delete();
+        return redirect()->route('transaction.index')->with('success', 'Passenger deleted successfully');
+    }
+}

@@ -11,16 +11,17 @@ class transaction_passengers extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'code',
-        'perjalananflights_id',
-        'flight_classes_id',
+        'transaksi_id',
         'nama',
-        'email',
-        'no_telepon',
-        'no_passengers',
-        'status_pembayaran',
-        'subtotal',
-        'grandtotal',
+        'tanggal_lahir',
+        'negara'
+    ];
+
+    protected $dates = [
+        'tanggal_lahir',
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     /**

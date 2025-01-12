@@ -482,6 +482,13 @@
                     <i class="fas fa-map-marked-alt"></i>
                     Destinasi
                 </a>
+                </li>
+            <li class="nav-item">
+                <a href="./transaction_passengers" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    Daftar
+                </a>
+            </li>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
