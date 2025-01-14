@@ -25,11 +25,11 @@ class Transaksi extends Model
 
     public function perjalananFlight()
     {
-        return $this->belongsTo(PerjalananFlight::class, 'perjalananflights_id');
+        return $this->belongsTo(PerjalananFlights::class, 'perjalananflights_id');
     }
 
     public function flightClass()
     {
-        return $this->belongsTo(FlightClass::class, 'flight_classes_id');
+        return $this->belongsTo(flight_class::class, 'flight_classes_id');
     }
 }

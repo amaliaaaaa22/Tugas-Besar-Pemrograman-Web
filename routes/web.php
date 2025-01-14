@@ -52,12 +52,5 @@ Route::post('/transaction_passengers', [TransactionPassengerController::class, '
 Route::put('/transaction_passengers/{id}', [TransactionPassengerController::class, 'update']);
 Route::delete('/transaction_passengers/{id}', [TransactionPassengerController::class, 'destroy']);
 Route::resource('transaksis', TransaksiController::class);
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::resource('perjalananflights', PerjalananFlightsController::class);
 Route::resource('transaksi', TransaksiController::class);
