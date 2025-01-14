@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\flight_class;
+use App\Models\PerjalananFlights;
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
-use App\Models\PerjalananFlight; // Model untuk tabel perjalanan flights
-use App\Models\FlightClass; // Model untuk tabel flight classes
+use App\Models\PerjalananFlight;
+use App\Models\FlightClass;
 
 class TransaksiController extends Controller
 {
@@ -15,7 +17,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksis = Transaksi::with(['perjalananFlight', 'flightClass'])->get();
-        return view('transaksis.index', compact('transaksis'));
+        return view('transaksi', compact('transaksis'));
     }
 
     /**
@@ -23,8 +25,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $perjalananFlights = PerjalananFlight::all();
-        $flightClasses = FlightClass::all();
+        $perjalananFlights = PerjalananFlights::all();
+        $flightClasses = flight_class::all();
 
         return view('transaksis.create', compact('perjalananFlights', 'flightClasses'));
     }
@@ -67,8 +69,8 @@ class TransaksiController extends Controller
     public function edit($id)
     {
         $transaksi = Transaksi::findOrFail($id);
-        $perjalananFlights = PerjalananFlight::all();
-        $flightClasses = FlightClass::all();
+        $perjalananFlights = PerjalananFlights::all();
+        $flightClasses = flight_class::all();
 
         return view('transaksis.edit', compact('transaksi', 'perjalananFlights', 'flightClasses'));
     }
