@@ -86,7 +86,7 @@
             transform: translateX(5px);
             box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2);
         }
-        </style>
+    </style>
 </head>
   <!-- Sidebar -->
     <div class="sidebar">
@@ -141,3 +141,4 @@
             </li>
         </ul>
     </div>
+    

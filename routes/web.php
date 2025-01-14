@@ -51,6 +51,9 @@ Route::get('/transaction_passengers', [TransactionPassengerController::class, 'i
 Route::post('/transaction_passengers', [TransactionPassengerController::class, 'store']);
 Route::put('/transaction_passengers/{id}', [TransactionPassengerController::class, 'update']);
 Route::delete('/transaction_passengers/{id}', [TransactionPassengerController::class, 'destroy']);
+Route::resource('transaksis', TransaksiController::class);
+
+
 
 Route::get('/', function () {
     return view('welcome');
