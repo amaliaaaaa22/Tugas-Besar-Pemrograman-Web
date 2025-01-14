@@ -21,6 +21,81 @@
             --sidebar-width: 280px;
         }
 
+        .skybooking-profile {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-description {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .advantages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .advantage-item {
+            background: #f0f9ff;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            flex: 1;
+        }
+
+
         body {
             background-color: #f0f4f8;
             min-height: 100vh;
@@ -444,6 +519,7 @@
             .quick-actions {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
         }
     </style>
 </head>
@@ -483,17 +559,11 @@
                     Destinasi
                 </a>
                 </li>
-            <li class="nav-item">
-                <a href="./transaction_passengers" class="nav-link">
-                    <i class="fas fa-user-plus"></i>
-                    Daftar
-                </a>
-            </li>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="./flight_class" class="nav-link">
                     <i class="fas fa-user-circle"></i>
-                    Profil
+                    Kelas Penerbangan
                 </a>
             </li>
             <li class="nav-item">
@@ -520,6 +590,50 @@
             </div>
         </div>
 
+        <div class="skybooking-profile">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> Tentang SkyBooking</h2>
+            <p class="section-description">
+                SkyBooking adalah platform modern yang menyediakan layanan pemesanan tiket penerbangan secara online. 
+                Kami berkomitmen untuk memberikan pengalaman pemesanan yang mudah, cepat, dan aman bagi pelanggan di seluruh Indonesia.
+            </p>
+            
+            <div class="profile-section">
+                <h3 class="section-subtitle">Tujuan Kami</h3>
+                <p class="section-text">
+                    Memberikan kemudahan akses ke berbagai destinasi dengan harga terbaik, serta memastikan perjalanan pelanggan 
+                    kami berjalan lancar dan nyaman.
+                </p>
+            </div>
+            
+            <div class="profile-section">
+                <h3 class="section-subtitle">Layanan Unggulan</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-plane-departure"></i> Pemesanan tiket penerbangan domestik dan internasional.</li>
+                    <li><i class="fas fa-percentage"></i>  Diskon eksklusif untuk pelanggan setia.</li>
+                    <li><i class="fas fa-suitcase"></i> Tambahan bagasi untuk anggota Gold dan Platinum.</li>
+                    <li><i class="fas fa-headset"></i> Layanan pelanggan 24/7 yang siap membantu kebutuhan Anda.</li>
+                </ul>
+            </div>
+            
+            <div class="profile-section">
+                <h3 class="section-subtitle">Keunggulan Kami</h3>
+                <div class="advantages">
+                    <div class="advantage-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Proses pemesanan tiket yang cepat dan mudah.</span>
+                    </div>
+                    <div class="advantage-item">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Pilihan destinasi terlengkap.</span>
+                    </div>
+                    <div class="advantage-item">
+                        <i class="fas fa-wallet"></i>
+                        <span>Metode pembayaran yang fleksibel.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Dashboard Cards -->
         <div class="dashboard-
         <!-- Dashboard Cards -->
@@ -542,40 +656,19 @@
                     </div>
                 </div>
             </div>
-
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <h2 class="card-title">Penerbangan Tahun Ini</h2>
-                    <i class="fas fa-plane-departure" style="color: var(--accent-color);"></i>
-                </div>
-                <h3 style="font-size: 2.5rem; color: var(--accent-color); margin: 1rem 0;">8</h3>
-                <p style="color: #64748b;">Total penerbangan di 2024</p>
-                <div style="margin-top: 1rem; display: flex; gap: 1rem;">
-                    <div style="flex: 1; text-align: center; padding: 0.8rem; background: #f0f9ff; border-radius: 10px;">
-                        <i class="fas fa-clock" style="color: var(--accent-color);"></i>
-                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">32 Jam</p>
-                        <p style="color: #64748b; font-size: 0.8rem;">Total Waktu</p>
-                    </div>
-                    <div style="flex: 1; text-align: center; padding: 0.8rem; background: #f0f9ff; border-radius: 10px;">
-                        <i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i>
-                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">5 Kota</p>
-                        <p style="color: #64748b; font-size: 0.8rem;">Dikunjungi</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Quick Actions -->
         <div class="quick-actions">
             <button class="action-button">
-            <a href="./home" class="link">
+            <a href="./destinasi" class="link">
                 <i class="fas fa-ticket-alt"></i>
                 <span>Cari Penerbangan</span>
             </a>
             </button>
             <button class="action-button">
                 <i class="fas fa-check-circle"></i>
-                <span>Check-in Online</span>
+                <span>Riwayat Transaksi</span>
             </button>
             <button class="action-button">
             <a href="./reschedule" class="link">
@@ -584,53 +677,5 @@
             </a>
             </button>
         </div>
-
-        <!-- Upcoming Flights -->
-        <div class="upcoming-flights">
-            <div class="card-header">
-                <h2 class="card-title">Penerbangan Mendatang</h2>
-                <a href="#" style="color: var(--accent-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    Lihat Semua <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="flight-list">
-                <div class="flight-item">
-                    <div class="flight-icon">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <div class="flight-details">
-                        <h3>
-                            Jakarta (CGK) <i class="fas fa-plane" style="transform: rotate(90deg);"></i> Bali (DPS)
-                        </h3>
-                        <p><i class="far fa-calendar-alt"></i> 24 Dec 2024 • <i class="far fa-clock"></i> 10:00 AM • GA-402</p>
-                    </div>
-                    <span class="flight-status status-confirmed">Confirmed</span>
-                </div>
-                <div class="flight-item">
-                    <div class="flight-icon">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <div class="flight-details">
-                        <h3>
-                            Bali (DPS) <i class="fas fa-plane" style="transform: rotate(90deg);"></i> Jakarta (CGK)
-                        </h3>
-                        <p><i class="far fa-calendar-alt"></i> 28 Dec 2024 • <i class="far fa-clock"></i> 13:45 PM • GA-409</p>
-                    </div>
-                    <span class="flight-status status-confirmed">Confirmed</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Notifications -->
-    <div class="notifications">
-        <div class="notification">
-            <i class="fas fa-info-circle"></i>
-            <div>
-                <strong>Check-in tersedia</strong>
-                <p>Anda dapat melakukan check-in untuk penerbangan GA-402</p>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

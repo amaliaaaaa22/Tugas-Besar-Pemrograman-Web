@@ -260,6 +260,7 @@
 </head>
 <body>
     <?php
+    // Data destinasi
     $destinations = [
         [
             'city' => 'Bali',
@@ -441,8 +442,16 @@
             'duration' => '1j 30m',
             'rating' => '4.6'
         ],
-        
-];
+        // Data lainnya...
+    ];
+
+    // Tangkap input pencarian
+    $searchQuery = isset($_POST['search']) ? strtolower(trim($_POST['search'])) : '';
+
+    // Filter hasil pencarian
+    $searchResults = array_filter($destinations, function ($dest) use ($searchQuery) {
+        return stripos(strtolower($dest['city']), $searchQuery) !== false;
+    });
     ?>
 
     <nav class="navbar">
@@ -466,65 +475,48 @@
     </section>
 
     <div class="search-container">
-        <form class="search-form">
+        <form class="search-form" method="POST" action="">
             <div class="form-group">
                 <i class="fas fa-plane-departure"></i>
-                <input type="text" class="form-input" placeholder="Dari mana?">
-            </div>
-            <div class="form-group">
-                <i class="fas fa-plane-arrival"></i>
-                <span id="destinations" data-destinations=" $destinations"></span>
-                <input type="text" class="form-input" placeholder="Ke mana?">
-            </div>
-            <div class="form-group">
-                <i class="fas fa-calendar"></i>
-                <input type="date" class="form-input">
-            </div>
-            <div class="form-group">
-                <i class="fas fa-users"></i>
-                <select class="form-input">
-                    <option value="">Jumlah Penumpang</option>
-                    <option value="1">1 Penumpang</option>
-                    <option value="2">2 Penumpang</option>
-                    <option value="3">3 Penumpang</option>
-                    <option value="4">4+ Penumpang</option>
-                </select>
+                <input type="text" class="form-input" name="search" placeholder="Cari Penerbangan?" value="<?php echo htmlspecialchars($searchQuery); ?>">
             </div>
             <button type="submit" class="search-btn">
-                <span id="destinations" data-destinations=" $destinations"></span>
                 <i class="fas fa-search"></i> Cari Penerbangan
             </button>
-            
         </form>
     </div>
 
     <section class="destinations">
-        <h2 class="section-title">Destinasi Populer</h2>
+        <h2 class="section-title">Hasil Pencarian</h2>
         <div class="destination-grid">
-            <?php foreach($destinations as $dest): ?>
-            <div class="destination-card">
-                <img src="<?php echo $dest['image']; ?>" alt="<?php echo $dest['city']; ?>" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title"><?php echo $dest['city']; ?> (<?php echo $dest['code']; ?>)</h3>
-                    <div class="card-info">
-                        <i class="fas fa-info-circle"></i>
-                        <span><?php echo $dest['description']; ?></span>
+            <?php if (!empty($searchResults)) : ?>
+                <?php foreach ($searchResults as $dest) : ?>
+                    <div class="destination-card">
+                        <img src="<?php echo $dest['image']; ?>" alt="<?php echo $dest['city']; ?>" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title"><?php echo $dest['city']; ?> (<?php echo $dest['code']; ?>)</h3>
+                            <div class="card-info">
+                                <i class="fas fa-info-circle"></i>
+                                <span><?php echo $dest['description']; ?></span>
+                            </div>
+                            <div class="card-info">
+                                <i class="fas fa-clock"></i>
+                                <span>Durasi: <?php echo $dest['duration']; ?></span>
+                            </div>
+                            <div class="card-info">
+                                <i class="fas fa-star"></i>
+                                <span>Rating: <?php echo $dest['rating']; ?></span>
+                            </div>
+                            <div class="price"><?php echo $dest['price']; ?></div>
+                            <a href="./tiket" class="book-btn">
+                                <i class="fas fa-ticket-alt"></i> Pesan Sekarang
+                            </a>
+                        </div>
                     </div>
-                    <div class="card-info">
-                        <i class="fas fa-clock"></i>
-                        <span>Durasi: <?php echo $dest['duration']; ?></span>
-                    </div>
-                    <div class="card-info">
-                        <i class="fas fa-star"></i>
-                        <span>Rating: <?php echo $dest['rating']; ?></span>
-                    </div>
-                    <div class="price"><?php echo $dest['price']; ?></div>
-                    <a href="./tiket" class="book-btn">
-                        <i class="fas fa-ticket-alt"></i> Pesan Sekarang
-                    </a>
-                </div>
-            </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <p class="no-results">Tidak ada penerbangan yang ditemukan untuk "<strong><?php echo htmlspecialchars($searchQuery); ?></strong>".</p>
+            <?php endif; ?>
         </div>
     </section>
 </body>
