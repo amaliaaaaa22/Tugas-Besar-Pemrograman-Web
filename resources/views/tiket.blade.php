@@ -395,6 +395,10 @@
 
         <form class="form-group">
             <div class="search-box">
+                <label><i class="fas fa-plane-departure"></i> Nama</label>
+                <input type="text" placeholder="Masukkan Nama Anda">
+            </div>
+            <div class="search-box">
                 <label><i class="fas fa-plane-departure"></i> Dari</label>
                 <input type="text" placeholder="Kota Keberangkatan">
             </div>
@@ -427,7 +431,7 @@
                     <option>First Class</option>
                 </select>
             </div>
-            <button class="search-button">Cari Penerbangan</button>
+            <button class="search-button">Pesan Tiket Anda</button>
         </form>
 
         <div class="popular-search">

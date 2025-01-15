@@ -253,5 +253,6 @@
         // Panggil fungsi untuk mengisi data tiket saat halaman dimuat
         window.onload = populateTicketData;
     </script>
+    
 </body>
 </html>
