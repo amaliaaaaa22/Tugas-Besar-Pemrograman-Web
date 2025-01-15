@@ -661,20 +661,22 @@
         <!-- Quick Actions -->
         <div class="quick-actions">
             <button class="action-button">
-            <a href="./destinasi" class="link">
-                <i class="fas fa-ticket-alt"></i>
-                <span>Cari Penerbangan</span>
-            </a>
+                <a href="./destinasi" class="link">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span>Cari Penerbangan</span>
+                </a>
             </button>
             <button class="action-button">
-                <i class="fas fa-check-circle"></i>
-                <span>Riwayat Transaksi</span>
+                <a href="./transaksi" class="link">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Riwayat Transaksi</span>
+                </a>
             </button>
             <button class="action-button">
-            <a href="./reschedule" class="link">
-                <i class="fas fa-calendar-alt"></i>
-                <span>Reschedule</span>
-            </a>
+                <a href="./reschedule" class="link">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Reschedule</span>
+                </a>
             </button>
         </div>
 </body>
