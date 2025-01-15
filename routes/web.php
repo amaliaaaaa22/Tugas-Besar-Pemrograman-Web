@@ -12,6 +12,9 @@ use App\Http\Controllers\TiketController;
 use App\Http\Controllers\RescheduleController;
 use App\Http\Controllers\PerjalananFlightsController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\FlightClassController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,3 +57,4 @@ Route::delete('/transaction_passengers/{id}', [TransactionPassengerController::c
 Route::resource('transaksis', TransaksiController::class);
 Route::resource('perjalananflights', PerjalananFlightsController::class);
 Route::resource('transaksi', TransaksiController::class);
+Route::resource('flight_class', FlightClassController::class);
