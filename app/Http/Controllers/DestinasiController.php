@@ -64,4 +64,11 @@ class DestinasiController extends Controller
         // Redirect dengan pesan sukses
         return back()->with('success', 'Gambar berhasil diunggah!');
     }
+
+    public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+        // Logika pencarian atau pengolahan data
+        return view('destinasi', compact('searchQuery'));
+    }
 }

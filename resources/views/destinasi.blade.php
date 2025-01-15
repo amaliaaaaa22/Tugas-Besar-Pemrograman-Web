@@ -475,16 +475,18 @@
     </section>
 
     <div class="search-container">
-        <form class="search-form" method="POST" action="">
+        <form class="search-form" method="POST" action="{{ route('destinasi.search') }}">
+            @csrf
             <div class="form-group">
                 <i class="fas fa-plane-departure"></i>
-                <input type="text" class="form-input" name="search" placeholder="Cari Penerbangan?" value="<?php echo htmlspecialchars($searchQuery); ?>">
+                <input type="text" class="form-input" name="search" placeholder="Cari Penerbangan?" value="{{ old('search') }}">
             </div>
             <button type="submit" class="search-btn">
                 <i class="fas fa-search"></i> Cari Penerbangan
             </button>
         </form>
     </div>
+
 
     <section class="destinations">
         <h2 class="section-title">Hasil Pencarian</h2>
