@@ -467,12 +467,26 @@
         </div>
     </nav>
 
-    <section class="hero" style="background: linear-gradient(rgba(29, 33, 112, 0.63), rgba(29, 33, 112, 0.63)), url('{{ asset('images/bg.jpg') }}')">
+    <section class="hero" style="background: linear-gradient(rgba(10, 21, 227, 0.63), rgba(7, 69, 204, 0.66)), url('{{ asset('images/bg.jpg') }}')">
         <div class="hero-content">
             <h1 class="hero-title">Jelajahi Dunia Bersama Kami</h1>
             <p class="hero-subtitle">Temukan penerbangan terbaik ke destinasi impian Anda</p>
         </div>
     </section>
+
+    <div class="search-container">
+        <form class="search-form" method="POST" action="{{ route('destinasi.search') }}">
+            @csrf
+            <div class="form-group">
+                <i class="fas fa-plane-departure"></i>
+                <input type="text" class="form-input" name="search" placeholder="Cari Penerbangan?" value="{{ old('search') }}">
+            </div>
+            <button type="submit" class="search-btn">
+                <i class="fas fa-search"></i> Cari Penerbangan
+            </button>
+        </form>
+    </div>
+
 
     <section class="destinations">
         <h2 class="section-title">Hasil Pencarian</h2>
