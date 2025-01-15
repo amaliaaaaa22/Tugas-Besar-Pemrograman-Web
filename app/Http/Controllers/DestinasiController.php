@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DestinasiController extends Controller
 {
@@ -13,20 +14,20 @@ class DestinasiController extends Controller
      */
     public function index()
     {
-        // Menyiapkan data destinasi
+        // Data destinasi yang akan ditampilkan
         $destinasi = [
             [
                 'id' => 'bali',
                 'nama' => 'Bali (DPS)',
                 'deskripsi' => 'Keindahan pantai dan budaya eksotis.',
-                'image' => 'https://via.placeholder.com/300x200', // Default image
+                'image' => asset('images/destinasi/bali.jpg'),
             ],
             [
                 'id' => 'jakarta',
                 'nama' => 'Jakarta (CGK)',
                 'deskripsi' => 'Pusat bisnis dan ibu kota Indonesia.',
-                'image' => 'https://via.placeholder.com/300x200', // Default image
-            ]
+                'image' => asset('images/destinasi/jakarta.jpg'),
+            ],
         ];
 
         // Mengirimkan data destinasi ke view
@@ -38,26 +39,36 @@ class DestinasiController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $destinasiId
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function uploadImage(Request $request, $destinasiId)
     {
-        // Validasi gambar
+        // Validasi input
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Mengambil file gambar yang diunggah
+        // Ambil file gambar yang diunggah
         $image = $request->file('image');
         $imageName = $destinasiId . '.' . $image->getClientOriginalExtension();
-        $imagePath = public_path('images/destinasi');
-        
-        // Menyimpan gambar ke folder destinasi
-        $image->move($imagePath, $imageName);
 
-        // Menyimpan path gambar di database atau melakukan hal lain sesuai kebutuhan
+        // Path penyimpanan gambar
+        $destinationPath = 'images/destinasi';
         
-        // Mengembalikan response sukses atau redirect ke halaman sebelumnya
+        // Simpan gambar ke storage/public/images/destinasi
+        $image->storeAs($destinationPath, $imageName, 'public');
+
+        // Contoh: Menyimpan informasi gambar ke database (opsional)
+        // Destinasi::updateOrCreate(['id' => $destinasiId], ['image' => $imageName]);
+
+        // Redirect dengan pesan sukses
         return back()->with('success', 'Gambar berhasil diunggah!');
+    }
+
+    public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+        // Logika pencarian atau pengolahan data
+        return view('destinasi', compact('searchQuery'));
     }
 }

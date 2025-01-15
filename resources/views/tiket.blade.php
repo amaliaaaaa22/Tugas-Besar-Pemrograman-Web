@@ -757,9 +757,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="./flight_class" class="nav-link">
                     <i class="fas fa-user-circle"></i>
-                    Profil
+                    Kelas Penerbangan
                 </a>
             </li>
             <li class="nav-item">

@@ -12,6 +12,9 @@ use App\Http\Controllers\TiketController;
 use App\Http\Controllers\RescheduleController;
 use App\Http\Controllers\PerjalananFlightsController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\FlightClassController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +38,7 @@ Route::post('/registrasi', [RegistrasiController::class, 'handleForm'])->name('r
 Route::get('/penerbangan', [PenerbanganController::class, 'index'])->name('penerbangan');
 Route::get('/destinasi', [DestinasiController::class, 'index'])->name('destinasi');
 Route::post('/destinasi/{destinasiId}/upload', [DestinasiController::class, 'uploadImage'])->name('destinasi.uploadImage');
+Route::post('/destinasi', [DestinasiController::class, 'search'])->name('destinasi.search');
 Route::get('/transaction_passengers', [TransactionPassengerController::class, 'index'])->name('transaction.index');
 Route::get('/tiket', [TiketController::class, 'index'])->name('tiket.index');
 Route::post('/tiket/{tiketId}/upload', [TiketController::class, 'uploadImage'])->name('tiket.upload');
@@ -54,3 +58,4 @@ Route::delete('/transaction_passengers/{id}', [TransactionPassengerController::c
 Route::resource('transaksis', TransaksiController::class);
 Route::resource('perjalananflights', PerjalananFlightsController::class);
 Route::resource('transaksi', TransaksiController::class);
+Route::resource('flight_class', FlightClassController::class);
