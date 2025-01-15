@@ -292,7 +292,7 @@
         [
             'city' => 'Bandung',
             'code' => 'BDO',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/bandung.jpg'),
             'description' => 'Kota kebanggaan Indonesia',
             'price' => 'Rp 1.100.000',
             'duration' => '1j 45m',
@@ -301,7 +301,7 @@
         [
             'city' => 'Yogyakarta',
             'code' => 'JOG',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/jogja.jpg'),
             'description' => 'Kota pelajar dengan kebudayaan tradisional',
             'price' => 'Rp 1.400.000',
             'duration' => '1j 30m',
@@ -310,7 +310,7 @@
         [
             'city' => 'Medan',
             'code' => 'KNO',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/medan.jpg'),
             'description' => 'Kota terbesar di Sumatera Utara',
             'price' => 'Rp 1.600.000',
             'duration' => '1j 45m',
@@ -319,7 +319,7 @@
         [
             'city' => 'Semarang',
             'code' => 'SRG',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/semarang.jpg'),
             'description' => 'Kota pelabuhan dengan bangunan bersejarah',
             'price' => 'Rp 1.250.000',
             'duration' => '1j 30m',
@@ -328,7 +328,7 @@
         [
             'city' => 'Makassar',
             'code' => 'UPG',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/makasar.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -337,7 +337,7 @@
         [
             'city' => 'Palembang',
             'code' => 'PLM',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/palembang.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -346,7 +346,7 @@
         [
             'city' => 'Denpasar',
             'code' => 'DPS',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/denpasar.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -355,7 +355,7 @@
         [
             'city' => 'Padang',
             'code' => 'PDG',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/padang.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -364,7 +364,7 @@
         [
             'city' => 'Balikpapan',
             'code' => 'BPN',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/balikpapan.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -373,7 +373,7 @@
         [
             'city' => 'Pontianak',
             'code' => 'PNK',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/pontianak.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -382,7 +382,7 @@
         [
             'city' => 'Manado',
             'code' => 'MDC',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/manado.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -391,7 +391,7 @@
         [
             'city' => 'Banjarmasin',
             'code' => 'BDJ',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/banjarmasin.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -400,7 +400,7 @@
         [
             'city' => 'Pekanbaru',
             'code' => 'PKU',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/pekanbaru.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -409,7 +409,7 @@
         [
             'city' => 'Bandar Lampung',
             'code' => 'TKG',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/bandarlampung.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -418,7 +418,7 @@
         [
             'city' => 'Samarinda',
             'code' => 'SRI',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/samarinda.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -427,7 +427,7 @@
         [
             'city' => 'Ternate',
             'code' => 'TTE',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/ternate.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -436,7 +436,7 @@
         [
             'city' => 'Ambon',
             'code' => 'AMQ',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/ambon.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
@@ -467,7 +467,7 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" style="background: linear-gradient(rgba(29, 33, 112, 0.63), rgba(29, 33, 112, 0.63)), url('{{ asset('images/bg.jpg') }}')">
         <div class="hero-content">
             <h1 class="hero-title">Jelajahi Dunia Bersama Kami</h1>
             <p class="hero-subtitle">Temukan penerbangan terbaik ke destinasi impian Anda</p>
