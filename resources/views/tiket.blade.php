@@ -718,6 +718,76 @@
                 font-size: 1.5rem;
                 }
             }
+        /* Mengatur tampilan form secara keseluruhan */
+        .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 800px;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mengatur tampilan setiap kotak pencarian */
+        .search-box {
+        flex: 1 1 300px;
+        display: flex;
+        flex-direction: column;
+        }
+
+        .search-box label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        }
+
+        .search-box input,
+        .search-box select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        }
+
+        /* Menambahkan ikon di dalam input */
+        .search-box input[type="text"] {
+        padding-left: 40px;
+        background-image: url('icon-url'); /* Ganti 'icon-url' dengan URL ikon yang sesuai */
+        background-position: 10px center;
+        background-repeat: no-repeat;
+        }
+
+        /* Mengatur tampilan input tanggal */
+        .search-box input[type="date"] {
+        padding-left: 10px;
+        }
+
+        /* Mengatur tampilan select */
+        .search-box select {
+        appearance: none;
+        background-image: url('dropdown-icon-url'); /* Ganti 'dropdown-icon-url' dengan URL ikon dropdown yang sesuai */
+        background-position: right 10px center;
+        background-repeat: no-repeat;
+        }
+
+        /* Menambahkan gaya pada tombol submit */
+        .form-group button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+        background-color: #0056b3;
+        }
+
     </style>
 </head>
 <body>
@@ -796,44 +866,42 @@
     <div class="hero">
         <h1>Pesan Tiket Pesawat</h1>
         <div class="form-container">
-            <form class="form-group">
-                <div class="search-box">
-                    <label for="from"><i class="fas fa-plane-departure"></i> Dari</label>
-                    <input type="text" id="from" placeholder="Kota Keberangkatan">
-                </div>
-                <div class="search-box">
-                    <label for="to"><i class="fas fa-plane-arrival"></i> Ke</label>
-                    <input type="text" id="to" placeholder="Kota Tujuan">
-                </div>
-                <div class="search-box">
-                    <label for="departure"><i class="far fa-calendar-alt"></i> Tanggal Berangkat</label>
-                    <input type="date" id="departure" placeholder="Tanggal Berangkat">
-                </div>
-                <div class="search-box">
-                    <label for="return"><i class="far fa-calendar-alt"></i> Tanggal Kembali</label>
-                    <input type="date" id="return" placeholder="Tanggal Kembali">
-                </div>
-                <div class="search-box">
-                    <label for="passengers"><i class="fas fa-users"></i> Jumlah Penumpang</label>
-                    <select id="passengers">
-                        <option value="1">1 Penumpang</option>
-                        <option value="2">2 Penumpang</option>
-                        <option value="3">3 Penumpang</option>
-                        <option value="4">4+ Penumpang</option>
-                    </select>
-                </div>
-                <div class="search-box">
-                    <label for="class"><i class="fas fa-chair"></i> Kelas Penerbangan</label>
-                    <select id="class">
-                        <option value="economy">Ekonomi</option>
-                        <option value="business">Bisnis</option>
-                        <option value="first">First Class</option>
-                    </select>
-                </div>
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i> Cari Penerbangan
-                </button>
-            </form>
+        <form class="form-group">
+            <div class="search-box">
+                <label for="from"><i class="fas fa-plane-departure"></i> Dari</label>
+                <input type="text" id="from" placeholder="Kota Keberangkatan">
+            </div>
+            <div class="search-box">
+                <label for="to"><i class="fas fa-plane-arrival"></i> Ke</label>
+                <input type="text" id="to" placeholder="Kota Tujuan">
+            </div>
+            <div class="search-box">
+                <label for="departure"><i class="far fa-calendar-alt"></i> Tanggal Berangkat</label>
+                <input type="date" id="departure">
+            </div>
+            <div class="search-box">
+                <label for="return"><i class="far fa-calendar-alt"></i> Tanggal Kembali</label>
+                <input type="date" id="return">
+            </div>
+            <div class="search-box">
+                <label for="passengers"><i class="fas fa-users"></i> Jumlah Penumpang</label>
+                <select id="passengers">
+                    <option value="1">1 Penumpang</option>
+                    <option value="2">2 Penumpang</option>
+                    <option value="3">3 Penumpang</option>
+                    <option value="4">4+ Penumpang</option>
+                </select>
+            </div>
+            <div class="search-box">
+                <label for="class"><i class="fas fa-chair"></i> Kelas Penerbangan</label>
+                <select id="class" name="class">
+                    <option value="economy">Ekonomi</option>
+                    <option value="business">Bisnis</option>
+                    <option value="first">First Class</option>
+                </select>
+            </div>
+        </form>
+
             <button class="search-button" onclick="saveTicket()">Pesan</button>
     </div>
 
