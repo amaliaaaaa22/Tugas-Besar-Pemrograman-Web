@@ -144,6 +144,7 @@
 
         .search-button:hover {
             transform: translateY(-2px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .popular-search {
@@ -431,7 +432,16 @@
                     <option>First Class</option>
                 </select>
             </div>
-            <button class="search-button">Pesan Tiket Anda</button>
+            <div class="search-box">
+                <label><i class="fas fa-clock"></i> Durasi</label>
+                <input type="text" placeholder="Durasi Anda">
+            </div>
+            <div class="search-box">
+                <label><i class="fas fa-ticket"></i> Harga</label>
+                <input type="text" placeholder="Harga Tiket">
+            </div>
+
+            <a href="/transaksi" type="submit"  class="search-button">    Pesan Tiket Anda  </a>
         </form>
 
         <div class="popular-search">
