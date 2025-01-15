@@ -29,20 +29,24 @@
         .sidebar {
             width: var(--sidebar-width);
             height: 100vh;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: white;
             padding: 2rem;
-            color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
             font-size: 26px;
             font-weight: bold;
-            color: white;
+            color: var(--primary-color);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: 3rem;
+        }
+
+        .logo i {
+            color: var(--accent-color);
         }
 
         .nav-menu {
@@ -53,7 +57,7 @@
             display: flex;
             align-items: center;
             padding: 1rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: #64748b;
             text-decoration: none;
             border-radius: 12px;
             transition: all 0.3s ease;
@@ -61,7 +65,7 @@
         }
 
         .nav-link:hover, .nav-link.active {
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
         }
 
@@ -179,14 +183,171 @@
                 padding: 1rem;
             }
         }
+               /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem; /* Kurangi dari 2.5rem menjadi 1.5rem */
+            padding-bottom: 1rem; /* Kurangi dari 1.5rem menjadi 1rem */
+            border-bottom: 2px solid #f0f4f8;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 28px;
+            color: var(--accent-color);
+            transform: rotate(-45deg);
+            animation: flyPlane 3s infinite ease-in-out;
+        }
+
+        @keyframes flyPlane {
+            0%, 100% { transform: rotate(-45deg) translateY(0); }
+            50% { transform: rotate(-45deg) translateY(-5px); }
+        }
+        .logo span {
+             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background-clip: text; 
+             -webkit-background-clip: text; 
+             -webkit-text-fill-color: transparent; 
+             color: transparent; 
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem;
+            color: #64748b;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link i {
+            margin-right: 1rem;
+            width: 24px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem 2.5rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header h1 i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .notifications-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .notifications-icon i {
+            font-size: 1.3rem;
+            color: #64748b;
+        }
+
+        .notifications-icon::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.05);
+        }
+
     </style>
 </head>
 <body>
     <div class="sidebar">
-        <a href="#" class="logo">
-            <i class="fas fa-plane"></i>
-            SkyBooking
-        </a>
+        <div class="sidebar-header">
+            <a href="#" class="logo">
+                <i class="fas fa-plane"></i>
+                Sky<span>Booking</span>
+            </a>
+        </div>
         <ul class="nav-menu">
             <li>
                 <a href="./beranda" class="nav-link">
