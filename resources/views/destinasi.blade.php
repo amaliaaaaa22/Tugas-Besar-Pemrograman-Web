@@ -265,7 +265,7 @@
         [
             'city' => 'Bali',
             'code' => 'DPS',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/bali.jpg'), // Ubah ke path gambar Anda
             'description' => 'Keindahan pantai dan budaya eksotis',
             'price' => 'Rp 1.500.000',
             'duration' => '1j 45m',
@@ -274,7 +274,7 @@
         [
             'city' => 'Jakarta',
             'code' => 'CGK',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/jakarta.jpg'), // Ubah ke path gambar Anda
             'description' => 'Pusat bisnis dan ibu kota Indonesia',
             'price' => 'Rp 1.200.000',
             'duration' => '1j 30m',
@@ -283,7 +283,7 @@
         [
             'city' => 'Surabaya',
             'code' => 'SUB',
-            'image' => '/api/placeholder/400/250',
+            'image' => asset('images/surabaya.jpg'), // Ubah ke path gambar Anda
             'description' => 'Kota pahlawan dengan wisata sejarah',
             'price' => 'Rp 1.300.000',
             'duration' => '1j 15m',
