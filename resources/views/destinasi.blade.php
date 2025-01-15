@@ -436,7 +436,7 @@
         [
             'city' => 'Ambon',
             'code' => 'AMQ',
-            'image' => asset('images/ternate.jpg'),
+            'image' => asset('images/ambon.jpg'),
             'description' => 'Kota pesisir dengan keindahan alam',
             'price' => 'Rp 1.350.000',
             'duration' => '1j 30m',
