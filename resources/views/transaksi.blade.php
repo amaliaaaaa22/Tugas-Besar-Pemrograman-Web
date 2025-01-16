@@ -3,142 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penerbangan Saya</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Konfirmasi Pemesanan Tiket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
     <style>
-
-                /* Sidebar Styles */
-        .sidebar {
-            position: fixed;
-            width: var(--sidebar-width);
-            height: 100vh;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            padding: 2rem;
-            overflow-y: auto;
+        :root {
+            --primary-color: #1a365d;
+            --accent-color: #38bdf8;
+            --gradient-start: #0ea5e9;
+            --gradient-end: #0284c7;
         }
 
-        .sidebar-header {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fa;
             display: flex;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid #f0f4f8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .ticket-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 900px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
         }
 
         .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
         .logo i {
-            font-size: 28px;
             color: var(--accent-color);
-            transform: rotate(-45deg);
-            animation: flyPlane 3s infinite ease-in-out;
+            margin-right: 10px;
         }
 
-        @keyframes flyPlane {
-            0%, 100% { transform: rotate(-45deg) translateY(0); }
-            50% { transform: rotate(-45deg) translateY(-5px); }
+        .ticket-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .logo span {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .section {
+            background-color: #f9fafb;
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        .nav-menu {
-            list-style: none;
-        }
-
-        .nav-item {
-            margin-bottom: 0.8rem;
-        }
-
-        .nav-link {
+        .info-row {
             display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .info-row label {
+            color: #6b7280;
+            font-weight: bold;
+        }
+
+        .barcode-section {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            padding: 1.2rem;
-            color: #64748b;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-weight: 500;
         }
 
-        .nav-link i {
-            margin-right: 1rem;
-            width: 24px;
-            text-align: center;
-            font-size: 1.1rem;
+        #barcode {
+            max-width: 300px;
+            margin-top: 10px;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .print-button {
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            align-self: center;
+        }
+
+        .flight-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        @media print {
+            .print-button {
+                display: none;
+            }
         }
     </style>
 </head>
-  <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <a href="#" class="logo">
+<body>
+    <div class="ticket-container">
+        <div class="ticket-header">
+            <div class="logo">
                 <i class="fas fa-plane"></i>
-                Sky<span>Booking</span>
-            </a>
+                SkyBooking
+            </div>
+            <div>
+                <strong>Nomor Pesanan:</strong> 
+                <span id="order-number">SB-2023-1234</span>
+            </div>
         </div>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="./beranda" class="nav-link">
-                    <i class="fas fa-home"></i>
-                    Beranda
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="./penerbangan" class="nav-link active">
-                    <i class="fas fa-plane-departure"></i>
-                    Penerbangan Saya
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/tiket" class="nav-link">
-                    <i class="fas fa-ticket-alt"></i>
-                    Pesan Tiket
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/destinasi" class="nav-link">
-                    <i class="fas fa-map-marked-alt"></i>
-                    Destinasi
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="./transaction_passengers" class="nav-link">
-                    <i class="fas fa-user-plus"></i>
-                    Daftar
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-user-circle"></i>
-                    Profil
-                </a>
-            </li>
-            <li class="nav-item">
-            <a href="./login" class="nav-link">
-                <i class="fas fa-sign-out-alt"></i>
-                Logout
-            </a>
-            </li>
-        </ul>
+
+        <div class="ticket-details">
+            <div class="section">
+                <h3>Rincian Perjalanan</h3>
+                <div class="info-row">
+                    <label>Kota Keberangkatan</label>
+                    <span id="departure-city">Jakarta</span>
+                </div>
+                <div class="info-row">
+                    <label>Kota Tujuan</label>
+                    <span id="destination-city">Bali</span>
+                </div>
+                <div class="info-row">
+                    <label>Tanggal Keberangkatan</label>
+                    <span id="departure-date">15 Agustus 2023</span>
+                </div>
+                <div class="info-row">
+                    <label>Tanggal Kembali</label>
+                    <span id="return-date">22 Agustus 2023</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Detail Penumpang</h3>
+                <div class="info-row">
+                    <label>Jumlah Penumpang</label>
+                    <span id="passenger-count">2 Dewasa</span>
+                </div>
+                <div class="info-row">
+                    <label>Kelas Penerbangan</label>
+                    <span id="flight-class">Ekonomi</span>
+                </div>
+                <div class="info-row">
+                    <label>Total Harga</label>
+                    <span id="total-price">Rp 2.500.000</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flight-summary">
+            <div class="summary-item">
+                <i class="fas fa-plane"></i>
+                <h4>Maskapai</h4>
+                <p id="airline">Garuda Indonesia</p>
+            </div>
+            <div class="summary-item">
+                <i class="fas fa-chair"></i>
+                <h4>Kursi</h4>
+                <p id="seat-number">12A, 12B</p>
+            </div>
+            <div class="summary-item">
+                <i class="fas fa-ticket-alt"></i>
+                <h4>Status</h4>
+                <p id="ticket-status">Terkonfirmasi</p>
+            </div>
+        </div>
+
+        <div class="barcode-section">
+            <h3>Boarding Pass</h3>
+            <svg id="barcode"></svg>
+        </div>
+
+        <button class="print-button" onclick="window.print()">
+            <i class="fas fa-print"></i> Cetak Tiket
+        </button>
     </div>
+
+    <script>
+        // Fungsi untuk mengambil parameter dari URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Fungsi untuk mengisi data tiket
+        function populateTicketData() {
+            // Contoh data yang bisa diambil dari form sebelumnya
+            document.getElementById('departure-city').textContent = 
+                getQueryParam('dari') || 'Jakarta';
+            document.getElementById('destination-city').textContent = 
+                getQueryParam('ke') || 'Bali';
+            document.getElementById('departure-date').textContent = 
+                getQueryParam('tangg al') || '15 Agustus 2023';
+            document.getElementById('return-date').textContent = 
+                getQueryParam('kembali') || '22 Agustus 2023';
+            document.getElementById('passenger-count').textContent = 
+                getQueryParam('jumlah') || '2 Dewasa';
+            document.getElementById('flight-class').textContent = 
+                getQueryParam('kelas') || 'Ekonomi';
+            document.getElementById('total-price').textContent = 
+                getQueryParam('harga') || 'Rp 2.500.000';
+            document.getElementById('airline').textContent = 
+                getQueryParam('maskapai') || 'Garuda Indonesia';
+            document.getElementById('seat-number').textContent = 
+                getQueryParam('kursi') || '12A, 12B';
+            document.getElementById('ticket-status').textContent = 
+                getQueryParam('status') || 'Terkonfirmasi';
+            document.getElementById('order-number').textContent = 
+                getQueryParam('nomor') || 'SB-2023-1234';
+
+            // Generate Barcode
+            JsBarcode("#barcode", document.getElementById('order-number').textContent, {
+                format: "CODE128",
+                width: 2,
+                height: 100,
+                displayValue: true
+            });
+        }
+
+        // Panggil fungsi untuk mengisi data tiket saat halaman dimuat
+        window.onload = populateTicketData;
+    </script>
     
+</body>
+</html>
