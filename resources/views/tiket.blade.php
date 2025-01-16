@@ -397,50 +397,50 @@
         <form class="form-group">
             <div class="search-box">
                 <label><i class="fas fa-plane-departure"></i> Nama</label>
-                <input type="text" placeholder="Masukkan Nama Anda">
+                <input type="text" name="nama" placeholder="Masukkan Nama Anda" required>
             </div>
             <div class="search-box">
                 <label><i class="fas fa-plane-departure"></i> Dari</label>
-                <input type="text" placeholder="Kota Keberangkatan">
+                <input type="text" name="dari" placeholder="Kota Keberangkatan" required>
             </div>
             <div class="search-box">
                 <label><i class="fas fa-plane-arrival"></i> Ke</label>
-                <input type="text" placeholder="Kota Tujuan">
+                <input type="text" name="ke" value="{{ request('kota_tujuan') }}" readonly>
+                <input type="hidden" name="kode_tujuan" value="{{ request('kode_tujuan') }}">
             </div>
             <div class="search-box">
                 <label><i class="far fa-calendar-alt"></i> Tanggal Berangkat</label>
-                <input type="date">
+                <input type="date" name="tanggal_berangkat" required min="{{ date('Y-m-d') }}">
             </div>
             <div class="search-box">
                 <label><i class="far fa-calendar-alt"></i> Tanggal Kembali</label>
-                <input type="date">
+                <input type="date" name="tanggal_kembali" min="{{ date('Y-m-d') }}">
             </div>
             <div class="search-box">
                 <label><i class="fas fa-users"></i> Jumlah Penumpang</label>
-                <select>
-                    <option>1 Penumpang</option>
-                    <option>2 Penumpang</option>
-                    <option>3 Penumpang</option>
-                    <option>4+ Penumpang</option>
+                <select name="jumlah_penumpang">
+                    <option value="1">1 Penumpang</option>
+                    <option value="2">2 Penumpang</option>
+                    <option value="3">3 Penumpang</option>
+                    <option value="4">4+ Penumpang</option>
                 </select>
             </div>
             <div class="search-box">
                 <label><i class="fas fa-chair"></i> Kelas Penerbangan</label>
-                <select>
-                    <option>Ekonomi</option>
-                    <option>Bisnis</option>
-                    <option>First Class</option>
+                <select name="kelas_penerbangan">
+                    <option value="ekonomi">Ekonomi</option>
+                    <option value="bisnis">Bisnis</option>
+                    <option value="first">First Class</option>
                 </select>
             </div>
             <div class="search-box">
                 <label><i class="fas fa-clock"></i> Durasi</label>
-                <input type="text" placeholder="Durasi Anda">
+                <input type="text" name="durasi" value="{{ request('durasi') }}" readonly>
             </div>
             <div class="search-box">
                 <label><i class="fas fa-ticket"></i> Harga</label>
-                <input type="text" placeholder="Harga Tiket">
+                <input type="text" name="harga" value="{{ request('harga') }}" readonly>
             </div>
-
             <a href="/transaksi" type="submit" class="search-button" style="text-decoration: none;">Pesan Tiket Anda</a>
         </form>
 

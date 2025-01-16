@@ -59,3 +59,4 @@ Route::resource('transaksis', TransaksiController::class);
 Route::resource('perjalananflights', PerjalananFlightsController::class);
 Route::resource('transaksi', TransaksiController::class);
 Route::resource('flight_class', FlightClassController::class);
+Route::get('/tiket', [TiketController::class, 'index'])->name('tiket');
