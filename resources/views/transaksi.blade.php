@@ -127,6 +127,19 @@
                 display: none;
             }
         }
+        .print-button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -202,13 +215,41 @@
             <h3>Boarding Pass</h3>
             <svg id="barcode"></svg>
         </div>
-
-        <button class="print-button" onclick="window.print()">
-            <i class="fas fa-print"></i> Cetak Tiket
+        <button class="print-button" onclick="showPopup()">
+            <i class="fas fa-money-bill"></i> Bayar Sekarang
         </button>
-    </div>
 
+        <!-- Pop-up Modal -->
+        <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+        background-color: white; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; z-index: 1000; border-radius: 10px;">
+            <p>Apakah Anda yakin ingin membayar sekarang?</p>
+            <button onclick="confirmPayment()" style="margin-right: 10px;">Ya</button>
+            <button onclick="closePopup()">Tidak</button>
+        </div>
+        <!-- Overlay -->
+        <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+
+
+            <button class="print-button" onclick="window.print()">
+                <i class="fas fa-print"></i> Cetak Tiket
+            </button>
+        </div>
     <script>
+          function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function confirmPayment() {
+                closePopup();
+                alert("Pembayaran berhasil dilakukan!");
+                window.location.href = "./penerbangan"; // Arahkan ke halaman penerbangan
+            }
         // Fungsi untuk mengambil parameter dari URL
         function getQueryParam(name) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -223,7 +264,7 @@
             document.getElementById('destination-city').textContent = 
                 getQueryParam('ke') || 'Bali';
             document.getElementById('departure-date').textContent = 
-                getQueryParam('tangg al') || '15 Agustus 2023';
+                getQueryParam('tanggal') || '15 Agustus 2023';
             document.getElementById('return-date').textContent = 
                 getQueryParam('kembali') || '22 Agustus 2023';
             document.getElementById('passenger-count').textContent = 
