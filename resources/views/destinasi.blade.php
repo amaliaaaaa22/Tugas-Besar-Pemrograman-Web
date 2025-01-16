@@ -510,9 +510,16 @@
                                 <span>Rating: <?php echo $dest['rating']; ?></span>
                             </div>
                             <div class="price"><?php echo $dest['price']; ?></div>
-                            <a href="./tiket" class="book-btn">
-                                <i class="fas fa-ticket-alt"></i> Pesan Sekarang
-                            </a>
+                            <!-- Ubah link menjadi form untuk mengirim data -->
+                            <form action="/tiket" method="GET">
+                                <input type="hidden" name="kota_tujuan" value="<?php echo $dest['city']; ?>">
+                                <input type="hidden" name="kode_tujuan" value="<?php echo $dest['code']; ?>">
+                                <input type="hidden" name="durasi" value="<?php echo $dest['duration']; ?>">
+                                <input type="hidden" name="harga" value="<?php echo $dest['price']; ?>">
+                                <button type="submit" class="book-btn">
+                                    <i class="fas fa-ticket-alt"></i> Pesan Sekarang
+                                </button>
+                            </form>
                         </div>
                     </div>
                 <?php endforeach; ?>
