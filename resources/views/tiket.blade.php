@@ -441,7 +441,7 @@
                 <input type="text" placeholder="Harga Tiket">
             </div>
 
-            <a href="/transaksi" type="submit"  class="search-button">    Pesan Tiket Anda  </a>
+            <a href="/transaksi" type="submit" class="search-button" style="text-decoration: none;">Pesan Tiket Anda</a>
         </form>
 
         <div class="popular-search">
