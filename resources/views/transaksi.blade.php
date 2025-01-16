@@ -177,7 +177,11 @@
             </div>
 
             <div class="section">
-                <h3>Detail Penumpang</h3>
+                <h3> Detail Penumpang</h3>
+                <div class="info-row">
+                    <label>Nama Lengkap</label>
+                    <span id="full-name">Andin Dwi</span>
+                </div>
                 <div class="info-row">
                     <label>Jumlah Penumpang</label>
                     <span id="passenger-count">2 Dewasa</span>
