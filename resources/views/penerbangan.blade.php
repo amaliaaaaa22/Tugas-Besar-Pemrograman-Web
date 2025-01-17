@@ -645,10 +645,6 @@
     <div class="container">
         <div class="page-header">
             <h1>Penerbangan Saya</h1>
-            <div class="user-info">
-                <img src="https://via.placeholder.com/40" alt="User">
-                <span>John Doe</span>
-            </div>
         </div>
 
         <div class="flight-card">
@@ -661,6 +657,10 @@
             </div>
             <div class="flight-body">
                 <div class="flight-details">
+                    <p> 
+                        <strong>Nama Lengkap</strong>
+                        <span>Muhammad Lutfi Alamsyah</span>
+                    </p>
                     <p>
                         <strong>Keberangkatan</strong>
                         <span>10:00 WIB</span>
@@ -679,6 +679,7 @@
                         <strong>Tujuan</strong>
                         <span>Bali (DPS)</span>
                     </p>
+
                 </div>
                 <div class="flight-details" style="grid-column: 1 / -1;">
                     <p>
@@ -693,19 +694,23 @@
             <div class="flight-header">
                 <div class="route-info">
                     <i class="fas fa-plane-departure"></i>
-                    <h2>GA124 - Bali ke Jakarta</h2>
+                    <h2>GA124 - Makassar Ke Yogyakarta</h2>
                 </div>
                 <i class="fas fa-plane flight-icon"></i>
             </div>
             <div class="flight-body">
                 <div class="flight-details">
+                    <p> 
+                        <strong>Nama Lengkap</strong>
+                        <span>Ridayanti Wardani</span>
+                    </p>
                     <p>
                         <strong>Keberangkatan</strong>
                         <span>15:00 WITA</span>
                     </p>
                     <p>
                         <strong>Asal</strong>
-                        <span>Bali (DPS)</span>
+                        <span> Makassar (MKS)</span>
                     </p>
                 </div>
                 <div class="flight-details">
@@ -715,7 +720,47 @@
                     </p>
                     <p>
                         <strong>Tujuan</strong>
-                        <span>Jakarta (CGK)</span>
+                        <span>Yogyakarta (CGK)</span>
+                    </p>
+                </div>
+                <div class="flight-details" style="grid-column: 1 / -1;">
+                    <p>
+                        <strong>Status</strong>
+                        <span class="status-badge status-confirmed">Confirmed</span>
+                    </p>
+                </div>
+
+        <div class="flight-card">
+            <div class="flight-header">
+                <div class="route-info">
+                    <i class="fas fa-plane-departure"></i>
+                    <h2>GA124 - Makassar Ke Yogyakarta</h2>
+                </div>
+                <i class="fas fa-plane flight-icon"></i>
+            </div>
+            <div class="flight-body">
+                <div class="flight-details">
+                    <p> 
+                        <strong>Nama Lengkap</strong>
+                        <span>Maudy Amalia</span>
+                    </p>
+                    <p>
+                        <strong>Keberangkatan</strong>
+                        <span>09:00 WIB</span>
+                    </p>
+                    <p>
+                        <strong>Asal</strong>
+                        <span>Bandung (BDU)</span>
+                    </p>
+                </div>
+                <div class="flight-details">
+                    <p>
+                        <strong>Kedatangan</strong>
+                        <span>11;00 WIB</span>
+                    </p>
+                    <p>
+                        <strong>Tujuan</strong>
+                        <span>Palembang (PLM)</span>
                     </p>
                 </div>
                 <div class="flight-details" style="grid-column: 1 / -1;">
