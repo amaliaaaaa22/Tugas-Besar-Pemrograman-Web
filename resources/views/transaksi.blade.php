@@ -3,301 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konfirmasi Pemesanan Tiket</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         :root {
             --primary-color: #1a365d;
             --accent-color: #38bdf8;
             --gradient-start: #0ea5e9;
             --gradient-end: #0284c7;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            --sidebar-width: 250px;
         }
 
         body {
-            background-color: #f4f7fa;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6eef5 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            font-size: 14px;
+            padding: 1rem;
         }
 
-        .ticket-container {
-            background-color: white;
+        .main-content {
+            width: 100%;
+            max-width: 800px;
+            padding: 1rem;
+        }
+
+        .transaction-card {
+            background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 900px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin: 0 auto;
+            font-size: 13px;
+            max-width: 600px;
+            width: 100%;
         }
 
-        .ticket-header {
+        .transaction-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 15px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f4f8;
+        }
+
+        .transaction-header h2 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .transaction-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .detail-label {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .detail-value {
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .payment-section {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .qrcode-container {
+            margin: 1.5rem auto;
+            width: 160px;
+            height: 160px;
+        }
+
+        .payment-info {
+            margin-top: 1rem;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .total-amount {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .payment-deadline {
+            color: #ef4444;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .action-button {
+            padding: 0.8rem 1.6rem;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .print-button {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .back-button {
+            background: #e5e7eb;
+            color: #64748b;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: white;
+            padding: 1.5rem;
+            position: fixed;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f4f8;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
             font-size: 24px;
             font-weight: bold;
             color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .logo i {
             color: var(--accent-color);
-            margin-right: 10px;
         }
 
-        .ticket-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        .nav-menu {
+            list-style: none;
         }
 
-        .section {
-            background-color: #f9fafb;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .info-row {
+        .nav-link {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .info-row label {
-            color: #6b7280;
-            font-weight: bold;
-        }
-
-        .barcode-section {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
             align-items: center;
+            padding: 0.8rem;
+            color: #64748b;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
         }
 
-        #barcode {
-            max-width: 300px;
-            margin-top: 10px;
-        }
-
-        .print-button {
+        .nav-link:hover, .nav-link.active {
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-            align-self: center;
         }
 
-        .flight-summary {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .summary-item {
-            background-color: #f0f4f8;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        @media print {
-            .print-button {
-                display: none;
-            }
-        }
-        .print-button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
+        .nav-link i {
+            margin-right: 0.8rem;
         }
     </style>
 </head>
 <body>
-    <div class="ticket-container">
-        <div class="ticket-header">
-            <div class="logo">
-                <i class="fas fa-plane"></i>
-                SkyBooking
-            </div>
-            <div>
-                <strong>Nomor Pesanan:</strong> 
-                <span id="order-number">SB-2023-1234</span>
-            </div>
-        </div>
 
-        <div class="ticket-details">
-            <div class="section">
-                <h3>Rincian Perjalanan</h3>
-                <div class="info-row">
-                    <label>Kota Keberangkatan</label>
-                    <span id="departure-city">Jakarta</span>
-                </div>
-                <div class="info-row">
-                    <label>Kota Tujuan</label>
-                    <span id="destination-city">Bali</span>
-                </div>
-                <div class="info-row">
-                    <label>Tanggal Keberangkatan</label>
-                    <span id="departure-date">15 Agustus 2023</span>
-                </div>
-                <div class="info-row">
-                    <label>Tanggal Kembali</label>
-                    <span id="return-date">22 Agustus 2023</span>
-                </div>
+    <div class="main-content">
+        <div class="transaction-card">
+            <div class="transaction-header">
+                <h2>Detail Transaksi</h2>
+                <div class="transaction-id">ID: TRX-{{ date('Ymd') }}-{{ rand(1000, 9999) }}</div>
             </div>
 
-            <div class="section">
-                <h3> Detail Penumpang</h3>
-                <div class="info-row">
-                    <label>Nama Lengkap</label>
-                    <span id="full-name">Andin Dwi</span>
+            <div class="transaction-details">
+                <div class="detail-group">
+                    <span class="detail-label">Nama Penumpang</span>
+                    <span class="detail-value">{{ request('nama') }}</span>
                 </div>
-                <div class="info-row">
-                    <label>Jumlah Penumpang</label>
-                    <span id="passenger-count">2 Dewasa</span>
+                <div class="detail-group">
+                    <span class="detail-label">Rute Penerbangan</span>
+                    <span class="detail-value">{{ request('dari') }} → {{ request('ke') }}</span>
                 </div>
-                <div class="info-row">
-                    <label>Kelas Penerbangan</label>
-                    <span id="flight-class">Ekonomi</span>
+                <div class="detail-group">
+                    <span class="detail-label">Tanggal Berangkat</span>
+                    <span class="detail-value">{{ request('tanggal_berangkat') }}</span>
                 </div>
-                <div class="info-row">
-                    <label>Total Harga</label>
-                    <span id="total-price">Rp 2.500.000</span>
+                <div class="detail-group">
+                    <span class="detail-label">Tanggal Kembali</span>
+                    <span class="detail-value">{{ request('tanggal_kembali') ?? 'Tidak Ada' }}</span>
+                </div>
+                <div class="detail-group">
+                    <span class="detail-label">Jumlah Penumpang</span>
+                    <span class="detail-value">{{ request('jumlah_penumpang') }} Orang</span>
+                </div>
+                <div class="detail-group">
+                    <span class="detail-label">Kelas Penerbangan</span>
+                    <span class="detail-value">{{ ucfirst(request('kelas_penerbangan')) }}</span>
+                </div>
+                <div class="detail-group">
+                    <span class="detail-label">Durasi Penerbangan</span>
+                    <span class="detail-value">{{ request('durasi') }}</span>
                 </div>
             </div>
-        </div>
 
-        <div class="flight-summary">
-            <div class="summary-item">
-                <i class="fas fa-plane"></i>
-                <h4>Maskapai</h4>
-                <p id="airline">Garuda Indonesia</p>
-            </div>
-            <div class="summary-item">
-                <i class="fas fa-chair"></i>
-                <h4>Kursi</h4>
-                <p id="seat-number">12A, 12B</p>
-            </div>
-            <div class="summary-item">
-                <i class="fas fa-ticket-alt"></i>
-                <h4>Status</h4>
-                <p id="ticket-status">Terkonfirmasi</p>
+            <div class="payment-section">
+                <h3>Pembayaran</h3>
+                <div class="total-amount">Rp {{ number_format((float) request('harga'), 0, ',', '.') }}</div>
+                
+                <div class="qrcode-container" id="qrcode"></div>
+
+                <div class="payment-info">
+                    <p>Silakan scan QR code di atas untuk melakukan pembayaran</p>
+                    <p class="payment-deadline">Batas waktu pembayaran: {{ date('d M Y H:i', strtotime('+24 hours')) }}</p>
+                </div>
+
+                <div class="button-group">
+                    <a href="#" class="action-button print-button" onclick="window.print()">
+                        <i class="fas fa-print"></i> Cetak Tiket
+                    </a>
+                    <a href="/tiket" class="action-button back-button">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </a>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="barcode-section">
-            <h3>Boarding Pass</h3>
-            <svg id="barcode"></svg>
-        </div>
-        <button class="print-button" onclick="showPopup()">
-            <i class="fas fa-money-bill"></i> Bayar Sekarang
-        </button>
-
-        <!-- Pop-up Modal -->
-        <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-        background-color: white; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; z-index: 1000; border-radius: 10px;">
-            <p>Apakah Anda yakin ingin membayar sekarang?</p>
-            <button onclick="confirmPayment()" style="margin-right: 10px;">Ya</button>
-            <button onclick="closePopup()">Tidak</button>
-        </div>
-        <!-- Overlay -->
-        <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
-
-
-            <button class="print-button" onclick="window.print()">
-                <i class="fas fa-print"></i> Cetak Tiket
-            </button>
-        </div>
     <script>
-          function showPopup() {
-            document.getElementById('popup').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        function confirmPayment() {
-                closePopup();
-                alert("Pembayaran berhasil dilakukan!");
-                window.location.href = "./penerbangan"; // Arahkan ke halaman penerbangan
-            }
-        // Fungsi untuk mengambil parameter dari URL
-        function getQueryParam(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
-
-        // Fungsi untuk mengisi data tiket
-        function populateTicketData() {
-            // Contoh data yang bisa diambil dari form sebelumnya
-            document.getElementById('departure-city').textContent = 
-                getQueryParam('dari') || 'Jakarta';
-            document.getElementById('destination-city').textContent = 
-                getQueryParam('ke') || 'Bali';
-            document.getElementById('departure-date').textContent = 
-                getQueryParam('tanggal') || '15 Agustus 2023';
-            document.getElementById('return-date').textContent = 
-                getQueryParam('kembali') || '22 Agustus 2023';
-            document.getElementById('passenger-count').textContent = 
-                getQueryParam('jumlah') || '2 Dewasa';
-            document.getElementById('flight-class').textContent = 
-                getQueryParam('kelas') || 'Ekonomi';
-            document.getElementById('total-price').textContent = 
-                getQueryParam('harga') || 'Rp 2.500.000';
-            document.getElementById('airline').textContent = 
-                getQueryParam('maskapai') || 'Garuda Indonesia';
-            document.getElementById('seat-number').textContent = 
-                getQueryParam('kursi') || '12A, 12B';
-            document.getElementById('ticket-status').textContent = 
-                getQueryParam('status') || 'Terkonfirmasi';
-            document.getElementById('order-number').textContent = 
-                getQueryParam('nomor') || 'SB-2023-1234';
-
-            // Generate Barcode
-            JsBarcode("#barcode", document.getElementById('order-number').textContent, {
-                format: "CODE128",
-                width: 2,
-                height: 100,
-                displayValue: true
+        // Generate QR Code
+        document.addEventListener('DOMContentLoaded', function() {
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: "SKY-{{ date('Ymd') }}-{{ rand(1000, 9999) }}-{{ request('harga') }}",
+                width: 160,
+                height: 160,
+                colorDark : "#1a365d",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
             });
-        }
-
-        // Panggil fungsi untuk mengisi data tiket saat halaman dimuat
-        window.onload = populateTicketData;
+        });
     </script>
-    
 </body>
 </html>
