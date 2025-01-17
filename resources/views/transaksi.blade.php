@@ -248,7 +248,6 @@
 
             <div class="payment-section">
                 <h3>Pembayaran</h3>
-                <div class="total-amount">Rp {{ number_format((float) request('harga'), 0, ',', '.') }}</div>
                 
                 <div class="qrcode-container" id="qrcode"></div>
 
