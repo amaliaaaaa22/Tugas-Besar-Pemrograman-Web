@@ -729,7 +729,10 @@
                         <span class="status-badge status-confirmed">Confirmed</span>
                     </p>
                 </div>
+            </div>
+        </div>
 
+        
         <div class="flight-card">
             <div class="flight-header">
                 <div class="route-info">
