@@ -734,7 +734,7 @@
             <div class="flight-header">
                 <div class="route-info">
                     <i class="fas fa-plane-departure"></i>
-                    <h2>GA124 - Makassar Ke Yogyakarta</h2>
+                    <h2>GA125 - Bandung Ke Palembang</h2>
                 </div>
                 <i class="fas fa-plane flight-icon"></i>
             </div>
