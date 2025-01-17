@@ -351,13 +351,13 @@
         </div>
         <ul class="nav-menu">
             <li>
-                <a href="./beranda" class="nav-link">
+                <a href="/beranda" class="nav-link">
                     <i class="fas fa-home"></i>
                     Beranda
                 </a>
             </li>
             <li>
-                <a href="./penerbangan" class="nav-link">
+                <a href="/penerbangan" class="nav-link">
                     <i class="fas fa-plane-departure"></i>
                     Penerbangan Saya
                 </a>
@@ -375,13 +375,13 @@
                 </a>
             </li>
             <li>
-                <a href="./flight_class" class="nav-link">
+                <a href="/flight_class" class="nav-link">
                     <i class="fas fa-user-circle"></i>
                     Kelas Penerbangan
                 </a>
             </li>
             <li>
-                <a href="./login" class="nav-link">
+                <a href="/login" class="nav-link">
                     <i class="fas fa-sign-out-alt"></i>
                     Logout
                 </a>
@@ -394,69 +394,59 @@
             <h1>Pesan Tiket Pesawat</h1>
         </div>
 
-        <form class="form-group">
+        <!-- Form Tiket -->
+        <form action="/transaksi" method="POST" class="form-group">
+            @csrf
             <div class="search-box">
-                <label><i class="fas fa-plane-departure"></i> Nama</label>
-                <input type="text" name="nama" placeholder="Masukkan Nama Anda" required>
+                <label><i class="fas fa-user"></i> Nama</label>
+                <input type="text" name="nama" placeholder="Masukkan Nama Anda" required value="{{ old('nama') }}">
             </div>
             <div class="search-box">
                 <label><i class="fas fa-plane-departure"></i> Dari</label>
-                <input type="text" name="dari" placeholder="Kota Keberangkatan" required>
+                <input type="text" name="dari" placeholder="Kota Keberangkatan" required value="{{ old('dari') }}">
             </div>
             <div class="search-box">
                 <label><i class="fas fa-plane-arrival"></i> Ke</label>
-                <input type="text" name="ke" value="{{ request('kota_tujuan') }}" readonly>
-                <input type="hidden" name="kode_tujuan" value="{{ request('kode_tujuan') }}">
+                <input type="text" name="ke" placeholder="Kota Tujuan" required value="{{ old('ke', request('kota_tujuan')) }}">
             </div>
             <div class="search-box">
                 <label><i class="far fa-calendar-alt"></i> Tanggal Berangkat</label>
-                <input type="date" name="tanggal_berangkat" required min="{{ date('Y-m-d') }}">
+                <input type="date" name="tanggal_berangkat" required min="{{ date('Y-m-d') }}" value="{{ old('tanggal_berangkat') }}">
             </div>
             <div class="search-box">
                 <label><i class="far fa-calendar-alt"></i> Tanggal Kembali</label>
-                <input type="date" name="tanggal_kembali" min="{{ date('Y-m-d') }}">
+                <input type="date" name="tanggal_kembali" min="{{ date('Y-m-d') }}" value="{{ old('tanggal_kembali') }}">
             </div>
             <div class="search-box">
                 <label><i class="fas fa-users"></i> Jumlah Penumpang</label>
-                <select name="jumlah_penumpang">
-                    <option value="1">1 Penumpang</option>
-                    <option value="2">2 Penumpang</option>
-                    <option value="3">3 Penumpang</option>
-                    <option value="4">4+ Penumpang</option>
+                <select name="jumlah_penumpang" required>
+                    @foreach(['1' => '1 Penumpang', '2' => '2 Penumpang', '3' => '3 Penumpang', '4' => '4+ Penumpang'] as $value => $label)
+                        <option value="{{ $value }}" {{ old('jumlah_penumpang') == $value ? 'selected' : '' }}>
+                            {{ $label }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
             <div class="search-box">
                 <label><i class="fas fa-chair"></i> Kelas Penerbangan</label>
-                <select name="kelas_penerbangan">
-                    <option value="ekonomi">Ekonomi</option>
-                    <option value="bisnis">Bisnis</option>
-                    <option value="first">First Class</option>
+                <select name="kelas_penerbangan" required>
+                    @foreach(['ekonomi' => 'Ekonomi', 'bisnis' => 'Bisnis', 'first' => 'First Class'] as $value => $label)
+                        <option value="{{ $value }}" {{ old('kelas_penerbangan') == $value ? 'selected' : '' }}>
+                            {{ $label }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
             <div class="search-box">
                 <label><i class="fas fa-clock"></i> Durasi</label>
-                <input type="text" name="durasi" value="{{ request('durasi') }}" readonly>
+                <input type="text" name="durasi" placeholder="Durasi Penerbangan" required value="{{ old('durasi', request('durasi')) }}">
             </div>
             <div class="search-box">
                 <label><i class="fas fa-ticket"></i> Harga</label>
-                <input type="text" name="harga" value="{{ request('harga') }}" readonly>
+                <input type="text" name="harga" placeholder="Harga Tiket" required value="{{ old('harga', request('harga')) }}">
             </div>
-            <a href="/transaksi" type="submit" class="search-button" style="text-decoration: none;">Pesan Tiket Anda</a>
+            <button type="submit" class="search-button">Pesan Tiket Anda</button>
         </form>
-
-        <div class="popular-search">
-            <h3>Destinasi Populer</h3>
-            <div class="tags">
-                <span class="tag">Bali</span>
-                <span class="tag">Yogyakarta</span>
-                <span class="tag">Lombok</span>
-                <span class="tag">Raja Ampat</span>
-                <span class="tag">Bromo</span>
-                <span class="tag">Jakarta</span>
-                <span class="tag">Bandung</span>
-                <span class="tag">Surabaya</span>
-            </div>
-        </div>
     </div>
 </body>
 </html>

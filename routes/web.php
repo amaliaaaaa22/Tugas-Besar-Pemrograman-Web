@@ -13,6 +13,7 @@ use App\Http\Controllers\RescheduleController;
 use App\Http\Controllers\PerjalananFlightsController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\FlightClassController;
+use Illuminate\Http\Request;
 
 
 /*
@@ -60,3 +61,36 @@ Route::resource('perjalananflights', PerjalananFlightsController::class);
 Route::resource('transaksi', TransaksiController::class);
 Route::resource('flight_class', FlightClassController::class);
 Route::get('/tiket', [TiketController::class, 'index'])->name('tiket');
+
+Route::get('/tiket', function () {
+    return view('tiket');
+})->name('tiket');
+
+// Route untuk memproses form dan menampilkan halaman transaksi
+Route::post('/transaksi', function (Request $request) {
+    // Validasi input
+    $validated = $request->validate([
+        'nama' => 'required',
+        'dari' => 'required',
+        'ke' => 'required',
+        'tanggal_berangkat' => 'required|date',
+        'tanggal_kembali' => 'nullable|date',
+        'jumlah_penumpang' => 'required',
+        'kelas_penerbangan' => 'required',
+        'durasi' => 'required',
+        'harga' => 'required',
+    ]);
+
+    // Redirect ke view transaksi dengan semua data
+    return view('transaksi')->with([
+        'nama' => $request->nama,
+        'dari' => $request->dari,
+        'ke' => $request->ke,
+        'tanggal_berangkat' => $request->tanggal_berangkat,
+        'tanggal_kembali' => $request->tanggal_kembali,
+        'jumlah_penumpang' => $request->jumlah_penumpang,
+        'kelas_penerbangan' => $request->kelas_penerbangan,
+        'durasi' => $request->durasi,
+        'harga' => $request->harga,
+    ]);
+});

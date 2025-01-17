@@ -3,62 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 
 class TiketController extends Controller
 {
-    /**
-     * Menampilkan halaman tiket penerbangan.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
+    public function proses(Request $request)
     {
-        // Menyiapkan data tiket
-        $tiket = [
-            [
-                'id' => 'tiket1',
-                'nama' => 'Bali - Jakarta',
-                'deskripsi' => 'Tiket penerbangan dari Bali (DPS) ke Jakarta (CGK).',
-                'harga' => 'Rp1.500.000',
-                'image' => 'https://via.placeholder.com/300x200', // Default image
-            ],
-            [
-                'id' => 'tiket2',
-                'nama' => 'Jakarta - Surabaya',
-                'deskripsi' => 'Tiket penerbangan dari Jakarta (CGK) ke Surabaya (SUB).',
-                'harga' => 'Rp1.200.000',
-                'image' => 'https://via.placeholder.com/300x200', // Default image
-            ]
-        ];
-
-        // Mengirimkan data tiket ke view
-        return view('tiket', compact('tiket'));
-    }
-
-    /**
-     * Mengunggah gambar tiket.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $tiketId
-     * @return \Illuminate\Http\Response
-     */
-    public function uploadImage(Request $request, $tiketId): RedirectResponse
-{
-        // Validasi gambar
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'dari' => 'required',
+            'ke' => 'required',
+            'tanggal_berangkat' => 'required|date',
+            'tanggal_kembali' => 'nullable|date',
+            'jumlah_penumpang' => 'required',
+            'kelas_penerbangan' => 'required',
+            'durasi' => 'required',
+            'harga' => 'required',
         ]);
 
-        // Mengambil file gambar yang diunggah
-        $image = $request->file('image');
-        $imageName = $tiketId . '.' . $image->getClientOriginalExtension();
-        $imagePath = public_path('images/tiket');
+        // Simpan data ke session
+        session()->put('booking_data', $validatedData);
 
-        // Menyimpan gambar ke folder tiket
-        $image->move($imagePath, $imageName);
-
-        // Kembali ke halaman sebelumnya dengan pesan sukses
-        return back()->with('success', 'Gambar tiket berhasil diunggah!');
+        // Redirect ke halaman transaksi
+        return redirect()->route('transaksi');
     }
 }
