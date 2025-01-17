@@ -57,6 +57,13 @@
         <div class="flex justify-end mt-4">
             <button id="add-row-btn" class="bg-green-500 text-white p-3 rounded-lg"><i class="fas fa-plus"></i> Tambah Data</button>
         </div>
+
+        <div class="flex justify-end mt-4">
+            <!-- Tombol Kembali -->
+            <a href="./beranda" class="bg-gray-500 text-white p-3 rounded-lg inline-flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali
+            </a>
+        </div>
     </div>
 
     <script>
